@@ -113,6 +113,9 @@
 			$(function() {
 				// 获取用户信息
 				let userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+				if(userInfo==null||userInfo==""||userInfo=="null"||userInfo==undefined||userInfo=="undefined"){
+					location.href="login.html";
+				}
 				$(".username").html(userInfo.username);
 				$("#username").val(userInfo.username);
 
