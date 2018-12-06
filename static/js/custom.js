@@ -22,5 +22,5 @@
 	}
 $(function(){
 	response();
-	inputblur();
+	// inputblur();
 })
