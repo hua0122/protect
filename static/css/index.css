@@ -80,8 +80,19 @@
 
 	padding: 0 .175rem;
 	box-sizing: border-box;
+	position: relative;
 }
 
+.footafter {
+	width: 25%;
+	height: 2px;
+	content: "";
+	display: block;
+	position: absolute;
+	top: .12rem;
+	left:.15rem;
+	background: #0062CC;
+}
 .index .main .content .foot .item {
 	height: .3rem;
 	line-height: .3rem;
@@ -106,19 +117,8 @@
 
 .active {
 	color: #0076FF;
-	position: relative;
 }
 
-.active::before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 80%;
-	height: 2px;
-}
 
 .item3 .text {
 	width: 2.2rem;

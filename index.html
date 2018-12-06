@@ -23,7 +23,7 @@
 				<div class="right">
 					<span class="mui-icon mui-icon-loop"></span>
 					<a href="#popover" id="openPopover">
-						<span class="name">张三</span>
+						<span class="name username">张三</span>
 						<span class="mui-icon mui-icon-arrowdown"></span>
 					</a>
 				</div>
@@ -75,6 +75,7 @@
 							<div class="item">
 								推荐码
 							</div>
+							<div class="footafter"></div>
 						</div>
 					</div>
 					<div class="tab-item">
@@ -105,47 +106,103 @@
 		<script src="static/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/custom.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/apiRoot.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/api.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			// 页面加载
 			$(function() {
+				// 获取用户信息
+				let userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+				$(".username").html(userInfo.username);
+				$("#username").val(userInfo.username);
+
 				//获得slider插件对象
 				var gallery = mui('.mui-slider');
+				let get_code_data = get_code(userInfo.phone);
+				if (get_code_data.data.code == null || get_code_data.data.code == "null" || get_code_data.data.code == undefined ||
+					get_code_data.data.code == "undefined" || get_code_data.data.code == "") {
+					mui.alert("请先设置推荐码", " ", "带我去设置", function() {
+						gallery.slider().gotoItem(2);
+						$("#recomcode").attr("disabled", false);
+						$(".footafter").css({
+							"left": "2.5rem",
+							"transition": ".5s"
+						})
+						$(".foot .item.active").css({
+							"transition": "1s"
+						})
+					})
+				}else{
+					
+						$(".setCode").removeClass("ztsbuttom");
+						$("#recomcode").attr("disabled", true);
+						$(".updetaCode").text("修改推荐码");
+						$(".updetaCode").css("width", ".75rem");
+				}
 				// 选项卡切换
 				$(".foot .item").click(function() {
+					if ($(this).index() == 0) {
+						$(".footafter").css({
+							"left": ".15rem"
+						})
+					}
+					if ($(this).index() == 1) {
+						$(".footafter").css({
+							"left": "1.35rem"
+						})
+					}
+					if ($(this).index() == 2) {
+						$(".footafter").css({
+							"left": "2.5rem"
+						})
+					}
 					$(this).addClass("active").siblings().removeClass("active");
 					gallery.slider().gotoItem($(this).index()); //跳转到第index张图片，index从0开始；
 
 				})
 				// 选项卡滑动
 				document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+					if (event.detail.slideNumber == 0) {
+						$(".footafter").css({
+							"left": ".15rem"
+						})
+					}
+					if (event.detail.slideNumber == 1) {
+						$(".footafter").css({
+							"left": "1.35rem"
+						})
+					}
+					if (event.detail.slideNumber == 2) {
+						$(".footafter").css({
+							"left": "2.5rem"
+						})
+					}
 					$(".foot .item").eq(event.detail.slideNumber).addClass("active").siblings().removeClass("active");
-					console.log(event.detail.slideNumber)
 				});
 
-				mui.alert("请先设置推荐码", " ", "带我去设置", function() {
-					gallery.slider().gotoItem(2);
-					$("#recomcode").attr("disabled", false)
-				})
+
 
 				// 设置推荐码
 				$(".setCode").click(function() {
-					$("#recomcode").val();
-					$(this).removeClass("ztsbuttom");
-					$("#recomcode").attr("disabled", true);
-					$(".updetaCode").text("修改推荐码");
-					$(".updetaCode").css("width",".65rem");
-					
+
+					let ajaxdata = {
+						tel: userInfo.phone,
+						username: userInfo.username,
+						code: $("#recomcode").val()
+					}
+					set_code(ajaxdata);
+
 				})
 				// 修改推荐码
 				$(".updetaCode").click(function() {
 					mui.confirm("修改推荐码可能会遗失之前宣传的学员，确认吗？", " ", ['不用了', '去修改'], function(e) {
 						if (e.index == 1) {
-						$(".setCode").addClass("ztsbuttom");
-						$("#recomcode").attr("disabled", false);
-						$(".updetaCode").text("");
-					$(".updetaCode").css("width","0");
-						} 
-						
+							$(".setCode").addClass("ztsbuttom");
+							$("#recomcode").attr("disabled", false);
+							$(".updetaCode").text("");
+							$(".updetaCode").css("width", "0");
+						}
+
 						mui('.mui-popover').popover('hide');
 					})
 				})

@@ -48,3 +48,19 @@ function ajaxPost(_url, _data) {
 	});
 	return dataAjax;
 }
+
+function num() {
+	let n = 60
+	let setter = setInterval(function() {
+		n--;
+		$(".codebtn").html(n)
+		if (n == 0) {
+			$(".codebtn").html("获取验证码");
+			$(".codebtn").css("pointer-events", "visible");
+		}
+
+	}, 1000)
+	setTimeout(function() {
+		clearInterval(setter)
+	}, 60000)
+};
