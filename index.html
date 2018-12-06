@@ -113,8 +113,8 @@
 			$(function() {
 				// 获取用户信息
 				let userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-				if(userInfo==null||userInfo==""||userInfo=="null"||userInfo==undefined||userInfo=="undefined"){
-					location.href="login.html";
+				if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
+					location.href = "login.html";
 				}
 				$(".username").html(userInfo.username);
 				$("#username").val(userInfo.username);
@@ -122,21 +122,25 @@
 				//获得slider插件对象
 				var gallery = mui('.mui-slider');
 				let get_code_data = get_code(userInfo.phone);
+
 				if (get_code_data.data.code == null || get_code_data.data.code == "null" || get_code_data.data.code == undefined ||
 					get_code_data.data.code == "undefined" || get_code_data.data.code == "") {
 					mui.alert("请先设置推荐码", " ", "带我去设置", function() {
 						gallery.slider().gotoItem(2);
 						$("#recomcode").attr("disabled", false);
 						$(".footafter").css({
+							"transition": ".5s",
+
 							"left": "2.5rem",
-							"transition": ".5s"
 						})
 						$(".foot .item.active").css({
 							"transition": "1s"
 						})
 					})
 				} else {
-
+					$(".footafter").css({
+						"transition": ".5s",
+					})
 					$(".setCode").removeClass("ztsbuttom");
 					$(".setCode").css("pointer-events", "none");
 					$("#recomcode").attr("disabled", true);
@@ -212,7 +216,7 @@
 					})
 				})
 				// 刷新页面
-				$(".mui-icon-loop").click(function(){
+				$(".mui-icon-loop").click(function() {
 					window.location.reload();
 				})
 			})
