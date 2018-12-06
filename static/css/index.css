@@ -1,0 +1,154 @@
+.index {
+	background: rgba(228, 228, 228, 1);
+	font-size: .16rem;
+	color: #333;
+}
+
+.index .header {
+	width: 100%;
+	height: .43rem;
+	background: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 .175rem;
+	box-sizing: border-box;
+}
+
+.index .header .left .logo {
+	width: .46rem;
+	height: .25rem;
+}
+
+.index .header .right {
+	color: #0076FF;
+}
+
+.index .header .right .mui-icon-loop {
+	margin-right: .1rem;
+}
+
+.index .header .mui-icon {
+	font-size: .15rem;
+}
+
+.index .main {
+	width: 100%;
+	padding: .175rem;
+	box-sizing: border-box;
+}
+
+.index .main .contentbox {
+
+	border-radius: .25rem;
+	overflow: hidden;
+}
+
+.index .main .content {
+	width: 3.4rem;
+	height: 3.85rem;
+	background: #fff;
+	padding-top: .25rem;
+	margin-bottom: .12rem;
+	box-sizing: border-box;
+}
+
+.index .main .content .con {
+	width: 100%;
+	height: 2.99rem;
+	padding: 0 .175rem;
+	box-sizing: border-box;
+}
+
+.index .main .content .con h1 {
+	font-size: .2rem;
+	color: #0076FF;
+	text-align: center;
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+	margin-bottom: .19rem;
+}
+
+.index .main .content .foot {
+	width: 100%;
+	height: .6rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: .14rem;
+
+	padding: 0 .175rem;
+	box-sizing: border-box;
+}
+
+.index .main .content .foot .item {
+	height: .3rem;
+	line-height: .3rem;
+	text-align: center;
+	padding: 0 .1rem;
+	box-sizing: border-box;
+}
+
+.mui-slider {
+	width: 100%;
+	height: 100%;
+}
+
+.item3>div {
+	width: 2.2rem;
+	margin: .15rem auto;
+}
+
+.item3 h1 {
+	width: 2.2rem;
+}
+
+.active {
+	color: #0076FF;
+	position: relative;
+}
+
+.active::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80%;
+	height: 2px;
+}
+
+.item3 .text {
+	width: 2.2rem;
+	font-size: .1rem;
+	color: #0076FF;
+	margin-bottom: .09rem;
+}
+
+
+.index .main .tab-item {
+	width: 100%;
+	height: 1.36rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.index .main .tab-item .item {
+	width: 1.05rem;
+	height: 100%;
+	background: #fff;
+	font-size: .12rem;
+	color: #333;
+	padding: .28rem .1rem;
+	box-sizing: border-box;
+}
+
+.index .main .tab-item .item>div {
+	line-height: .27rem;
+}
+
+.index .main .tab-item .item>div span {
+	color: #0076FF;
+}

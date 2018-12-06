@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>保护系统</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="description" content="Yan" />
+		<meta name="keywords" content="Yan" />
+		<meta name="author" content="Yan" />
+		<link rel="stylesheet" type="text/css" href="static/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/public.css" />
+	</head>
+	<body>
+		<section class=" index">
+			<div class="header">
+				<div class="left"><img class="logo" src="static/images/logo.png"></div>
+				<div class="right">
+					<span class="mui-icon mui-icon-loop"></span>
+					<a href="#popover" id="openPopover">
+						<span class="name">张三</span>
+						<span class="mui-icon mui-icon-arrowdown"></span>
+					</a>
+				</div>
+			</div>
+			<div class="main">
+				<div class="contentbox">
+					<div class="content">
+						<div class="con">
+							<div class="mui-slider">
+								<div class="mui-slider-group">
+									<!--第一个内容区容器-->
+									<div class="mui-slider-item">
+										<h1>意向资源保护</h1>
+									</div>
+									<!--第二个内容区-->
+									<div class="mui-slider-item">
+										<h1>开发资源记录添加</h1>
+									</div>
+									<!--第二个内容区-->
+									<div class="mui-slider-item item3">
+										<div>
+											<h1>我的推荐码</h1>
+											<div class="input-row">
+												<label>姓名</label>
+												<input type="text" id="username" disabled="disabled" class="input">
+											</div>
+											<div class="input-row">
+												<label>推荐码</label>
+												<input type="text" id="recomcode" class="input" placeholder="设置您的推荐码">
+											</div>
+											<div class="text">
+												<strong>Tips:</strong>推荐码长度1-6位，由字母和数字组成（不区分大小写）。请输入便于记忆传播的组合，随意修改可能会遗失之前宣传的学员。
+											</div>
+											<div class="input-row ztsbuttom setCode">
+												<span>就它了</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="foot">
+							<div class="item active">
+								资源保护
+							</div>
+							<div class="item">
+								开发记录
+							</div>
+							<div class="item">
+								推荐码
+							</div>
+						</div>
+					</div>
+					<div class="tab-item">
+						<div class="item">
+							<div>资源保护详细</div>
+							<div>已保护：<span>45</span></div>
+							<div>即将过期：<span>45</span></div>
+						</div>
+						<div class="item">
+							<div>开发记录详细</div>
+							<div>已添加：<span>45</span></div>
+							<div>待跟进：<span>45</span></div>
+						</div>
+						<div class="item">
+							<div>成交学员详细</div>
+							<div>已成交：<span>45</span></div>
+							<div>下属成交：<span>45</span></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div id="popover" class="mui-popover">
+				<div class="updetaCode"></div>
+				<div>退出</div>
+			</div>
+		</section>
+		<script src="static/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/custom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 页面加载
+			$(function() {
+				//获得slider插件对象
+				var gallery = mui('.mui-slider');
+				// 选项卡切换
+				$(".foot .item").click(function() {
+					$(this).addClass("active").siblings().removeClass("active");
+					gallery.slider().gotoItem($(this).index()); //跳转到第index张图片，index从0开始；
+
+				})
+				// 选项卡滑动
+				document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+					$(".foot .item").eq(event.detail.slideNumber).addClass("active").siblings().removeClass("active");
+					console.log(event.detail.slideNumber)
+				});
+
+				mui.alert("请先设置推荐码", " ", "带我去设置", function() {
+					gallery.slider().gotoItem(2);
+					$("#recomcode").attr("disabled", false)
+				})
+
+				// 设置推荐码
+				$(".setCode").click(function() {
+					$("#recomcode").val();
+					$(this).removeClass("ztsbuttom");
+					$("#recomcode").attr("disabled", true);
+					$(".updetaCode").text("修改推荐码");
+					$(".updetaCode").css("width",".65rem");
+					
+				})
+				// 修改推荐码
+				$(".updetaCode").click(function() {
+					mui.confirm("修改推荐码可能会遗失之前宣传的学员，确认吗？", " ", ['不用了', '去修改'], function(e) {
+						if (e.index == 1) {
+						$(".setCode").addClass("ztsbuttom");
+						$("#recomcode").attr("disabled", false);
+						$(".updetaCode").text("");
+					$(".updetaCode").css("width","0");
+						} 
+						
+						mui('.mui-popover').popover('hide');
+					})
+				})
+			})
+		</script>
+	</body>
+</html>
