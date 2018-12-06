@@ -132,12 +132,13 @@
 							"transition": "1s"
 						})
 					})
-				}else{
-					
-						$(".setCode").removeClass("ztsbuttom");
-						$("#recomcode").attr("disabled", true);
-						$(".updetaCode").text("修改推荐码");
-						$(".updetaCode").css("width", ".75rem");
+				} else {
+
+					$(".setCode").removeClass("ztsbuttom");
+					$(".setCode").css("pointer-events", "none");
+					$("#recomcode").attr("disabled", true);
+					$(".updetaCode").text("修改推荐码");
+					$(".updetaCode").css("width", ".75rem");
 				}
 				// 选项卡切换
 				$(".foot .item").click(function() {
@@ -198,6 +199,7 @@
 					mui.confirm("修改推荐码可能会遗失之前宣传的学员，确认吗？", " ", ['不用了', '去修改'], function(e) {
 						if (e.index == 1) {
 							$(".setCode").addClass("ztsbuttom");
+							$(".setCode").css("pointer-events", "visible");
 							$("#recomcode").attr("disabled", false);
 							$(".updetaCode").text("");
 							$(".updetaCode").css("width", "0");
@@ -205,6 +207,10 @@
 
 						mui('.mui-popover').popover('hide');
 					})
+				})
+				// 刷新页面
+				$(".mui-icon-loop").click(function(){
+					window.location.reload();
 				})
 			})
 		</script>
