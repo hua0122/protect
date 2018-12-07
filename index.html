@@ -128,7 +128,6 @@
 					mui.alert("请先设置推荐码", " ", "带我去设置", function() {
 						gallery.slider().gotoItem(2);
 						$("#recomcode").attr("disabled", false);
-						$("input#recomcode").focus();
 						$(".footafter").css({
 							"transition": ".5s",
 							"left": "2.5rem",
@@ -136,6 +135,7 @@
 						$(".foot .item.active").css({
 							"transition": "1s"
 						})
+						$("input#recomcode").focus();
 					})
 				} else {
 					
@@ -211,7 +211,6 @@
 							
 							$(".setCode").css("pointer-events", "visible");
 							$("#recomcode").attr("disabled", false);
-							$("input#recomcode").focus();
 							// $(".updetaCode").text("");
 							// $(".updetaCode").css("width", "0");
 							gallery.slider().gotoItem(2);
@@ -224,6 +223,7 @@
 							$(".foot .item.active").css({
 								"transition": "1s"
 							})
+							$("input#recomcode").focus();
 						}
 
 						mui('.mui-popover').popover('hide');
