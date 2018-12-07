@@ -110,6 +110,7 @@
 		<script type="text/javascript">
 			// 页面加载
 			$(function() {
+				
 				// 获取用户信息
 				let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 				if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
@@ -127,6 +128,7 @@
 					mui.alert("请先设置推荐码", " ", "带我去设置", function() {
 						gallery.slider().gotoItem(2);
 						$("#recomcode").attr("disabled", false);
+						$("#recomcode").focus();
 						$(".footafter").css({
 							"transition": ".5s",
 

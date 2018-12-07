@@ -55,6 +55,7 @@ function num() {
 		n--;
 		$(".codebtn").html(n)
 		if (n <= 0) {
+			alert(n)
 			$(".codebtn").html("获取验证码");
 			$(".codebtn").css("pointer-events", "visible");
 			$(".codebtn").addClass("ztsbuttom").removeClass("ztsfontcolor");

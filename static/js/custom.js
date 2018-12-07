@@ -22,4 +22,12 @@
 	}
 $(function(){
 	response();
+	
+		$('.input-row').find("input").on('focus',function(e){
+			$(".input-row").removeClass("border-shadow");
+			$(this).parents(".input-row").addClass("border-shadow");
+		});
+		$('.input-row').find("input").on('blur',function(e){
+			$(this).parents(".input-row").removeClass("border-shadow");
+		});
 })
