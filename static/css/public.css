@@ -77,7 +77,7 @@
 }
 .border-shadow{
 	border: 1px solid #0076FF;
-	box-shadow: 0px 0px .05rem .01rem rgba(0,0,0,0.2);
+	box-shadow: 0px 0px .05rem .01rem rgba(0,0,0,0.1);
 }
 .dx{
 	width: 100%;
