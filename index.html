@@ -209,6 +209,8 @@
 					mui.confirm("修改推荐码可能会遗失之前宣传的学员，确认吗？", " ", ['不用了', '去修改'], function(e) {
 						if (e.index == 1) {
 							$(".setCode").addClass("ztsbuttom");
+							
+							$("#recomcode").focus();
 							$(".setCode").css("pointer-events", "visible");
 							$("#recomcode").attr("disabled", false);
 							// $(".updetaCode").text("");
