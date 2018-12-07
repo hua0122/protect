@@ -135,7 +135,10 @@
 						$(".foot .item.active").css({
 							"transition": "1s"
 						})
-						$("input#recomcode").focus();
+						setTimeout(function(){
+							
+							$("input#recomcode").focus();
+						},1000)
 					})
 				} else {
 					
