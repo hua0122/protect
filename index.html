@@ -128,10 +128,9 @@
 					mui.alert("请先设置推荐码", " ", "带我去设置", function() {
 						gallery.slider().gotoItem(2);
 						$("#recomcode").attr("disabled", false);
-						$("#recomcode").focus();
+						$("input#recomcode").focus();
 						$(".footafter").css({
 							"transition": ".5s",
-
 							"left": "2.5rem",
 						})
 						$(".foot .item.active").css({
@@ -210,9 +209,9 @@
 						if (e.index == 1) {
 							$(".setCode").addClass("ztsbuttom");
 							
-							$("#recomcode").focus();
 							$(".setCode").css("pointer-events", "visible");
 							$("#recomcode").attr("disabled", false);
+							$("input#recomcode").focus();
 							// $(".updetaCode").text("");
 							// $(".updetaCode").css("width", "0");
 							gallery.slider().gotoItem(2);
