@@ -102,7 +102,7 @@
 			</div>
 			<div id="popover" class="mui-popover">
 				<div class="updetaCode"></div>
-				<div>退出</div>
+				<div class="Logout">退出</div>
 			</div>
 		</section>
 		<script src="static/js/apiRoot.js" type="text/javascript" charset="utf-8"></script>
@@ -111,7 +111,7 @@
 			// 页面加载
 			$(function() {
 				// 获取用户信息
-				let userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+				let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 				if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
 					location.href = "login.html";
 				}
@@ -137,6 +137,8 @@
 						})
 					})
 				} else {
+					
+					$("#recomcode").val(get_code_data.data.code);
 					$(".footafter").css({
 						"transition": ".5s",
 					})
@@ -207,8 +209,18 @@
 							$(".setCode").addClass("ztsbuttom");
 							$(".setCode").css("pointer-events", "visible");
 							$("#recomcode").attr("disabled", false);
-							$(".updetaCode").text("");
-							$(".updetaCode").css("width", "0");
+							// $(".updetaCode").text("");
+							// $(".updetaCode").css("width", "0");
+							gallery.slider().gotoItem(2);
+							$("#recomcode").attr("disabled", false);
+							$(".footafter").css({
+								"transition": ".5s",
+
+								"left": "2.5rem",
+							})
+							$(".foot .item.active").css({
+								"transition": "1s"
+							})
 						}
 
 						mui('.mui-popover').popover('hide');
@@ -217,6 +229,13 @@
 				// 刷新页面
 				$(".mui-icon-loop").click(function() {
 					window.location.reload();
+				})
+				$(".Logout").click(function() {
+					localStorage.removeItem("userInfo");
+
+					mui.alert("退出登录", " ", function() {
+						location.href = "login.html";
+					})
 				})
 			})
 		</script>

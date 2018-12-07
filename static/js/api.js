@@ -27,7 +27,7 @@ function sent_msg(tel) {
 function login(ajaxdata) {
 	let data = ajaxPost(protect_login, ajaxdata);
 	if(data.status=="200"){
-		sessionStorage.setItem("userInfo",JSON.stringify(data.data))
+		localStorage.setItem("userInfo",JSON.stringify(data.data))
 		location.href="index.html";
 	}else{
 				mui.alert(data.msg, " ")
