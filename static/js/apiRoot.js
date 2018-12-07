@@ -50,7 +50,7 @@ function ajaxPost(_url, _data) {
 }
 
 function num() {
-	let n = 60
+	let n = 59
 	let setter = setInterval(function() {
 		$(".codebtn").html(n)
 		if (n <1) {
@@ -58,10 +58,9 @@ function num() {
 			$(".codebtn").css("pointer-events", "visible");
 			$(".codebtn").addClass("ztsbuttom").removeClass("ztsfontcolor");
 		}
-
 		n--;
 	}, 1000)
 	setTimeout(function() {
 		clearInterval(setter)
-	}, 60000)
+	}, 61000)
 };
