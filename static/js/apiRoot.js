@@ -52,15 +52,14 @@ function ajaxPost(_url, _data) {
 function num() {
 	let n = 60
 	let setter = setInterval(function() {
-		n--;
 		$(".codebtn").html(n)
-			alert(n)
-		if (n <= 0) {
+		if (n <1) {
 			$(".codebtn").html("获取验证码");
 			$(".codebtn").css("pointer-events", "visible");
 			$(".codebtn").addClass("ztsbuttom").removeClass("ztsfontcolor");
 		}
 
+		n--;
 	}, 1000)
 	setTimeout(function() {
 		clearInterval(setter)
