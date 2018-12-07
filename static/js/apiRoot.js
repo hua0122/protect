@@ -54,8 +54,8 @@ function num() {
 	let setter = setInterval(function() {
 		n--;
 		$(".codebtn").html(n)
-		if (n <= 0) {
 			alert(n)
+		if (n <= 0) {
 			$(".codebtn").html("获取验证码");
 			$(".codebtn").css("pointer-events", "visible");
 			$(".codebtn").addClass("ztsbuttom").removeClass("ztsfontcolor");
