@@ -1,0 +1,157 @@
+.index-TstudentDetail{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+		background: rgba(0,0,0,0.4);
+	overflow-y: scroll;
+	display: none;
+}
+.TstudentDetail .main {
+	width: 100%;
+	padding: 0  0 .6rem 0;
+	box-sizing: border-box;
+}
+.dange .main{
+	
+	padding:.175rem;
+	box-sizing: border-box;
+}
+.TstudentDetail .main .contentbox {
+	overflow: hidden;
+	font-size: .14rem;
+}
+.TstudentDetail .main .contentbox .content {
+	width: 100%;
+	padding: .01rem;
+	box-sizing: border-box;
+}
+
+.TstudentDetail .foot {
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 3.4rem;
+	height: .5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: .14rem;
+	box-sizing: border-box;
+	border-radius: .25rem .25rem 0 0;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.TstudentDetail .footafter {
+	width: 25%;
+	height: 2px;
+	content: "";
+	display: block;
+	position: absolute;
+	top: .12rem;
+	left:.4rem;
+	background: #0062CC;
+	transition: 1s;
+}
+.TstudentDetail .foot .item {
+	flex: 1;
+	height: .5rem;
+	line-height: .65rem;
+	text-align: center;
+	padding: 0 .1rem;
+	box-sizing: border-box;
+	background: #fff;
+}
+.TstudentDetail .active {
+	color: #0076FF;
+}
+
+
+.TstudentDetail .title{
+	width: 100%;
+	height: .47rem;
+	line-height: .47rem;
+	border-bottom: 1px solid #0076FF;
+	padding: 0 .24rem;
+	box-sizing: border-box;
+}
+.TstudentDetail .fu-title{
+	
+		width: 100%;
+		line-height: .4rem;
+		border-bottom: 1px solid #0076FF;
+		box-sizing: border-box;
+}
+.TstudentDetail .column .item{
+	line-height: .4rem;
+	padding: 0 .20rem;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+}
+.TstudentDetail .column .fu-item{
+	line-height: .3rem;
+	font-size: 0.12rem;
+}
+.TstudentDetail .column .item div{
+	flex: 1;
+}
+.TstudentDetail .column .item div:nth-of-type(1){
+	text-align: left;
+}
+.TstudentDetail .column .item div:nth-of-type(2){
+	text-align: center;
+}
+.TstudentDetail .column .item div:nth-of-type(3){
+	text-align: right;
+}
+.TstudentDetail .column .item .text6{
+	font-size: .06rem;
+}
+.TstudentDetail .column{
+	background: #fff;
+	margin-bottom: .15rem;
+}
+.TstudentDetail .column:first-child{
+	border-radius: .25rem .25rem 0 0;
+	
+}
+.TstudentDetail .column:last-child{
+	border-radius:0 0 .25rem .25rem ;
+	
+}
+.TstudentDetail .mui-slider-item{
+	width: 100%;
+	padding: .175rem;
+	box-sizing: border-box;
+}
+.TstudentDetail .relieve{
+	color: #FF0000;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.TstudentDetail .relieve .time{
+	color: #333;
+}
+.TstudentDetail .relieve .line{
+	display: block;
+	color: #0076FF;
+box-sizing:border-box ;
+}
+.TstudentDetail .deinsurance{
+	color: #949494;
+}
+.TstudentDetail .mui-icon-forward{
+	font-size: .16rem;
+	line-height: .4rem;
+}
+.index-TstudentDetail .relieve{
+	color: #333;
+}
+.input-row{
+	letter-spacing: 0;
+}

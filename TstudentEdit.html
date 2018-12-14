@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>资源保护详细</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="description" content="Yan" />
+		<meta name="keywords" content="Yan" />
+		<meta name="author" content="Yan" />
+		<link rel="stylesheet" type="text/css" href="static/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/public.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/edit.css" />
+		<script src="static/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/custom.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<section class="edit">
+			<div class="main">
+				<div class="contentbox ">
+					<div class="content ">
+						<div class="title">开发记录编辑</div>
+						<div class="editcon">
+							<div class="input-colum">
+
+								<div class="input-row">
+									<label style="flex: 1.5;">学员姓名/昵称</label>
+									<input type="text" id="selName" class="input" placeholder="请输入">
+								</div>
+								<div class="input-row">
+									<label><i class="relieve">*</i>电话</label>
+									<input type="text" id="selTel" class="input" placeholder="请输入">
+								</div>
+							</div>
+							<div class="input-colum">
+								<div class="input-row" style="line-height: .65rem;height: .65rem;">
+									<label><i class="relieve">*</i>资源获取途径</label>
+									<textarea id="selChannel" placeholder="请输入"></textarea>
+								</div>
+							</div>
+							<div class="input-colum">
+								<div class="input-row" style="line-height: .65rem;height: .65rem;">
+									<label> 一次跟进情况</label>
+									<textarea id="selOne" placeholder="请输入"></textarea>
+								</div>
+							</div>
+							<div class="input-colum">
+								<div class="input-row" style="line-height: .65rem;height: .65rem;">
+									<label> 二次跟进情况</label>
+									<textarea id="selTwo" placeholder="请输入"></textarea>
+								</div>
+							</div>
+							<div class="input-colum">
+								<div class="input-row" style="line-height: .65rem;height: .65rem;">
+									<label> 三次跟进情况</label>
+									<textarea id="selThree" placeholder="请输入"></textarea>
+								</div>
+							</div>
+
+							<div class="input-colum">
+
+								<div class="input-row">
+									<label> 预计成交时间</label>
+									<input type="datetime-local" id="selDeal_time" class="input" placeholder="请输入">
+								</div>
+							</div>
+							<div class="input-colum">
+								<div class="input-row" style="line-height: .65rem;height: .65rem;">
+									<label> 备注</label>
+									<textarea id="selRemark" placeholder="请输入"></textarea>
+								</div>
+							</div>
+							<div class="input-colum">
+
+								<div class="input-row ztsbuttom updatebtn">
+									更新
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</section>
+
+
+
+		<script src="static/js/reg.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/apiRoot.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 页面加载
+			$(function() {
+				var now = new Date();
+				var str = now.getFullYear() + "-" + fix((now.getMonth() + 1), 2) + "-" + fix(now.getDate(), 2) + "T" + fix(now.getHours(),
+					2) + ":" + fix(now.getMinutes(), 2);
+				let current_time = str.replace("T", " ");
+				develop_show();
+				$(".updatebtn").click(function() {
+
+					let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+					let datetime1 = new Date($("#selDeal_time").val().replace("T", " "));
+					let name = $("#selName").val(), //[string]		学员姓名	
+						studentPhone = $("#selTel").val(), //复制	[string]	是	学员电话号码	
+						person = userInfo.phone, //[string]	是	推荐人电话号码	
+						channel = $("#selChannel").val(), //[string]	是	资源获取途径	
+						one = $("#selOne").val(), //[string]		一次跟进情况	
+						two = $("#selTwo").val(), //[string]		两次跟进情况	
+						three = $("#selThree").val(), //[string]		三次跟进情况	
+						deal_time = (datetime1.getTime() / 1000), //	[string]		预计成交时间	
+						remark = $("#selemark").val(); //[string]		备注
+
+					var stop_time = $("#selDeal_time").val().replace("T", " ");
+
+					if (studentPhone == "" || studentPhone == null || studentPhone == undefined || studentPhone == "null" ||
+						studentPhone ==
+						"undefined") {
+						mui.alert("请输入学员电话", " ");
+						$("#addTel").focus();
+						return;
+					}
+					if (!regList.phone.test(studentPhone)) {
+						mui.alert("电话号码格式错误\n请输入正确的电话号码", " ");
+						$("#addTel").focus();
+						return;
+					}
+					if (channel == "" || channel == null || channel == undefined || channel == "null" || channel == "undefined") {
+						mui.alert("请输入资源获取途径", " ");
+						$("#addChannel").focus();
+						return;
+					}
+					if (!CompareDate(current_time, stop_time)) {
+
+						mui.alert("预计成交时间需大于当前时间", " ");
+						$("#addDeal_time").focus();
+						return;
+					}
+					let ajaxdata = {
+						id: getQueryString("id"),
+						name: name, //[string]		学员姓名	
+						tel: studentPhone, //复制	[string]	是	学员电话号码	
+						person: person, //[string]	是	推荐人电话号码	
+						channel: channel, //[string]	是	资源获取途径	
+						one: one, //[string]		一次跟进情况	
+						two: two, //[string]		两次跟进情况	
+						three: three, //[string]		三次跟进情况	
+						deal_time: deal_time, //	[string]		预计成交时间	
+						remark: remark //[string]		备注
+					}
+					develop_edit(ajaxdata)
+				})
+
+			})
+		</script>
+	</body>
+</html>

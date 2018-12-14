@@ -1,0 +1,28 @@
+.edit .main {
+	width: 100%;
+	padding: .175rem;
+	box-sizing: border-box;
+}
+
+.edit .main .contentbox {
+
+	border-radius: .25rem;
+	overflow: hidden;
+}
+
+.edit .main .content {
+	width: 3.4rem;
+	background: #fff;
+	box-sizing: border-box;
+}
+.con{
+	padding: .3rem;
+	box-sizing: border-box;
+}
+.editcon{
+	padding: .175rem;
+	box-sizing: border-box;
+}
+.input-row{
+	letter-spacing: 0;
+}

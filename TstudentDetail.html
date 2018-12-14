@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>成交学员详细</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="description" content="Yan" />
+		<meta name="keywords" content="Yan" />
+		<meta name="author" content="Yan" />
+		<link rel="stylesheet" type="text/css" href="static/css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/public.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/TstudentDetail.css" />
+		<script src="static/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/custom.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<section class="  TstudentDetail">
+			<div class="main">
+				<div class="contentbox ">
+					<div class="content">
+						<div class="mui-slider">
+							<div class="mui-slider-group">
+								<!--第一个内容区容器-->
+								<div class="mui-slider-item item1">
+								</div>
+								<!--第一个内容区容器-->
+								<div class="mui-slider-item item2">
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="foot box-shadow" style="display: none;">
+				<div class="item active">
+					我的成交
+				</div>
+				<div class="item">
+					团队成交
+				</div>
+				<div class="footafter"></div>
+			</div>
+
+		</section>
+
+		<script src="static/js/reg.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/apiRoot.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/api.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			// 页面加载
+			$(function() {
+
+				let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+				if (userInfo.type == "children") {
+					$(".TstudentDetail .foot").hide();
+					$(".item2").remove();
+
+				} else {
+					$(".TstudentDetail .foot").show();
+				}
+				// 成交学员列表
+				deal_list();
+				// 团队成交数据
+				deal_team();
+				//获得slider插件对象
+				var gallery = mui('.mui-slider');
+				$(".content").css("height", ($(".mui-slider-item").eq(0).height() + 10) + "px");
+
+				// 选项卡切换
+				$(".foot .item").click(function() {
+					$('body').scrollTop(0);
+					$(".content").css("height", ($(".mui-slider-item").eq($(this).index()).height() + 10) + "px");
+
+					if ($(this).index() == 0) {
+						$(".footafter").css({
+							"left": ".4rem"
+						})
+					}
+					if ($(this).index() == 1) {
+						$(".footafter").css({
+							"left": "2.1rem"
+						})
+					}
+					$(this).addClass("active").siblings().removeClass("active");
+					gallery.slider().gotoItem($(this).index()); //跳转到第index张图片，index从0开始；
+
+				})
+				// 选项卡滑动
+				document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+
+					$('body').scrollTop(0);
+					$(".content").css("height", ($(".mui-slider-item").eq(event.detail.slideNumber).height() + 10) + "px");
+					if (event.detail.slideNumber == 0) {
+						$(".footafter").css({
+							"left": ".4rem"
+						})
+					}
+					if (event.detail.slideNumber == 1) {
+						$(".footafter").css({
+							"left": "2.1rem"
+						})
+					}
+					$(".foot .item").eq(event.detail.slideNumber).addClass("active").siblings().removeClass("active");
+				});
+			})
+		</script>
+	</body>
+</html>

@@ -12,8 +12,9 @@
 		<meta name="keywords" content="Yan" />
 		<meta name="author" content="Yan" />
 		<link rel="stylesheet" type="text/css" href="static/css/mui.min.css" />
-		<link rel="stylesheet" type="text/css" href="static/css/index.css" />
 		<link rel="stylesheet" type="text/css" href="static/css/public.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/TstudentDetail.css" />
 		<script src="static/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/custom.js" type="text/javascript" charset="utf-8"></script>
@@ -37,12 +38,80 @@
 							<div class="mui-slider">
 								<div class="mui-slider-group">
 									<!--第一个内容区容器-->
-									<div class="mui-slider-item">
-										<h1>意向资源保护</h1>
+									<div class="mui-slider-item item1">
+										<div>
+											<h1>意向资源保护</h1>
+											<div class="input-row">
+												<input type="text" id="studentName" placeholder="学员姓名/昵称(非必填)" class="input">
+											</div>
+											<div class="input-row">
+												<input type="text" class="input" id="studentPhone" placeholder="学员常用电话(非常重要)">
+											</div>
+											<div class="input-row ztsbuttom updatebtn">
+												<span>查询</span>
+											</div>
+										</div>
 									</div>
 									<!--第二个内容区-->
-									<div class="mui-slider-item">
-										<h1>开发资源记录添加</h1>
+									<div class="mui-slider-item item2">
+										<div class="editcon">
+											<h1>开发资源记录添加</h1>
+											<div class="input-colum">
+
+												<div class="input-row">
+													<label style="flex: 1.5;">学员姓名/昵称</label>
+													<input type="text" class="input" id="addName" placeholder="请输入">
+												</div>
+												<div class="input-row">
+													<label><i class="relieve">*</i>电话</label>
+													<input type="text" class="input" id="addTel" placeholder="请输入">
+												</div>
+											</div>
+											<div class="input-colum">
+												<div class="input-row" style="line-height: .65rem;height: .65rem;">
+													<label><i class="relieve">*</i>资源获取途径</label>
+													<textarea id="addChannel" placeholder="请输入"></textarea>
+												</div>
+											</div>
+											<div class="input-colum">
+												<div class="input-row" style="line-height: .65rem;height: .65rem;">
+													<label> 一次跟进情况</label>
+													<textarea id="addOne" placeholder="请输入"></textarea>
+												</div>
+											</div>
+											<div class="input-colum">
+												<div class="input-row" style="line-height: .65rem;height: .65rem;">
+													<label> 二次跟进情况</label>
+													<textarea id="addTwo" placeholder="请输入"></textarea>
+												</div>
+											</div>
+											<div class="input-colum">
+												<div class="input-row" style="line-height: .65rem;height: .65rem;">
+													<label> 三次跟进情况</label>
+													<textarea id="addThree" placeholder="请输入"></textarea>
+												</div>
+											</div>
+
+											<div class="input-colum">
+
+												<div class="input-row">
+													<label> 预计成交时间</label>
+													<input type="datetime-local" class="input" id="addDeal_time" placeholder="请输入">
+												</div>
+											</div>
+											<div class="input-colum">
+												<div class="input-row" style="line-height: .65rem;height: .65rem;">
+													<label> 备注</label>
+													<textarea id="addRemark" placeholder="请输入"></textarea>
+												</div>
+											</div>
+											<div class="input-colum">
+
+												<div class="input-row ztsbuttom addBtn">
+													添加
+												</div>
+											</div>
+										</div>
 									</div>
 									<!--第二个内容区-->
 									<div class="mui-slider-item item3">
@@ -81,21 +150,21 @@
 						</div>
 					</div>
 					<div class="tab-item">
-						<div class="item">
+						<a href="RprotectionDetail.html" class="item">
 							<div>资源保护详细</div>
 							<div>已保护：<span>45</span></div>
 							<div>即将过期：<span>45</span></div>
-						</div>
-						<div class="item">
+						</a>
+						<a href="DrecordDetail.html" class="item">
 							<div>开发记录详细</div>
 							<div>已添加：<span>45</span></div>
 							<div>待跟进：<span>45</span></div>
-						</div>
-						<div class="item">
+						</a>
+						<a href="TstudentDetail.html" class="item">
 							<div>成交学员详细</div>
 							<div>已成交：<span>45</span></div>
 							<div>下属成交：<span>45</span></div>
-						</div>
+						</a>
 					</div>
 				</div>
 
@@ -105,12 +174,149 @@
 				<div class="Logout">退出</div>
 			</div>
 		</section>
+		<section class="index-TstudentDetail TstudentDetail dange">
+			<div class="main">
+				<div class="contentbox ">
+					<div class="content ">
+						<!--第一个内容区容器-->
+						<div class="column box-shadow">
+							<div class="title">
+								您共成交<span class="ztsfontcolor">28</span>名学员
+							</div>
+							<div class="item ztsfontcolor">
+								<span><span class="time">今天</span><span class="text6">共2名</span></span>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+						</div>
+						<div class="column box-shadow">
+							<div class="item ztsfontcolor">
+								<span><span class="time">前天</span><span class="text6">共6名</span></span>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+						</div>
+						<div class="column box-shadow">
+							<div class="item ztsfontcolor">
+								<span><span class="time">前天</span><span class="text6">共6名</span></span>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+						</div>
+						<div class="column box-shadow">
+							<div class="item ztsfontcolor">
+								<span><span class="time">前天</span><span class="text6">共6名</span></span>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+						</div>
+						<div class="column box-shadow">
+							<div class="item ztsfontcolor">
+								<span><span class="time">前天</span><span class="text6">共6名</span></span>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+						</div>
+						<div class="column box-shadow">
+							<div class="item ztsfontcolor">
+								已脱保名单
+							</div>
+
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+							<div class="item ">
+								<div>网名张三疯</div>
+								<div>15922228888</div>
+								<div class="relieve"><span class="time">7:00</span><span class="line">|</span><span>解除<span class="mui-icon mui-icon-forward"></span></span></div>
+							</div>
+							<div class="dx">人家有底线啦</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</section>
+		<script src="static/js/reg.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/apiRoot.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/api.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			// 页面加载
 			$(function() {
+				// 初始化时间
+				var now = new Date();
+				var str = now.getFullYear() + "-" + fix((now.getMonth() + 1), 2) + "-" + fix(now.getDate(), 2) + "T" + fix(now.getHours(),
+					2) + ":" + fix(now.getMinutes(), 2);
+				$("#addDeal_time").val(str);
+				let current_time = str.replace("T", " ");
 				
+				// 资源保护列表替换
+				resource_list("popo");
+				$(".index-TstudentDetail").css("width", $("body").width())
+				$(".index-TstudentDetail").on("click", function() {
+					$(".index-TstudentDetail").hide();
+				})
+				$(".index-TstudentDetail .main").on("click", function() {
+					return false;
+				})
+				// 替换保护学员
+				$(".replace").on("click", function() {
+
+					let id = $(this).attr("id");
+					let name = $(this).parents(".relieve").siblings(".name").text();
+					let tel = $(this).parents(".relieve").siblings(".tel").text();
+					$(".index-TstudentDetail").css("display", "none");
+					mui.confirm("将 " + name + " " + tel + "替换掉，确认吗？", " ", ["取消", "替换"], function(e) {
+						if (e.index == 1) {
+							resource_replace(id)
+						}
+					})
+
+				})
 				// 获取用户信息
 				let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 				if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
@@ -135,13 +341,13 @@
 						$(".foot .item.active").css({
 							"transition": "1s"
 						})
-						setTimeout(function(){
-							
+						setTimeout(function() {
+
 							$("input#recomcode").focus();
-						},1000)
+						}, 1000)
 					})
 				} else {
-					
+
 					$("#recomcode").val(get_code_data.data.code);
 					$(".footafter").css({
 						"transition": ".5s",
@@ -155,20 +361,30 @@
 				// 选项卡切换
 				$(".foot .item").click(function() {
 					if ($(this).index() == 0) {
+
+						$(".mui-slider").css("overflow-y", "hidden");
+						$(".mui-slider").scrollTop(0)
+
 						$(".footafter").css({
 							"left": ".15rem"
 						})
 					}
 					if ($(this).index() == 1) {
+						$(".mui-slider").css("overflow-y", "scroll");
+
 						$(".footafter").css({
 							"left": "1.35rem"
 						})
 					}
 					if ($(this).index() == 2) {
+						$(".mui-slider").css("overflow-y", "hidden");
+						$(".mui-slider").scrollTop(0)
 						$(".footafter").css({
 							"left": "2.5rem"
 						})
 					}
+					$(".mui-slider-group").css("height", $(".mui-slider-item").eq($(this).index()).height());
+
 					$(this).addClass("active").siblings().removeClass("active");
 					gallery.slider().gotoItem($(this).index()); //跳转到第index张图片，index从0开始；
 
@@ -176,20 +392,27 @@
 				// 选项卡滑动
 				document.querySelector('.mui-slider').addEventListener('slide', function(event) {
 					if (event.detail.slideNumber == 0) {
+						$(".mui-slider").css("overflow-y", "hidden");
+						$(".mui-slider").scrollTop(0)
 						$(".footafter").css({
 							"left": ".15rem"
 						})
 					}
 					if (event.detail.slideNumber == 1) {
+						$(".mui-slider").css("overflow-y", "scroll")
 						$(".footafter").css({
 							"left": "1.35rem"
 						})
 					}
 					if (event.detail.slideNumber == 2) {
+						$(".mui-slider").css("overflow-y", "hidden")
+						$(".mui-slider").scrollTop(0)
 						$(".footafter").css({
 							"left": "2.5rem"
 						})
 					}
+					$(".mui-slider-group").css("height", $(".mui-slider-item").eq(event.detail.slideNumber).height());
+
 					$(".foot .item").eq(event.detail.slideNumber).addClass("active").siblings().removeClass("active");
 				});
 
@@ -208,10 +431,11 @@
 				})
 				// 修改推荐码
 				$(".updetaCode").click(function() {
+
 					mui.confirm("修改推荐码可能会遗失之前宣传的学员，确认吗？", " ", ['不用了', '去修改'], function(e) {
 						if (e.index == 1) {
 							$(".setCode").addClass("ztsbuttom");
-							
+
 							$(".setCode").css("pointer-events", "visible");
 							$("#recomcode").attr("disabled", false);
 							// $(".updetaCode").text("");
@@ -226,11 +450,11 @@
 							$(".foot .item.active").css({
 								"transition": "1s"
 							})
-							
-								setTimeout(function(){
-									
-									$("input#recomcode").focus();
-								},1000)
+
+							setTimeout(function() {
+
+								$("input#recomcode").focus();
+							}, 1000)
 						}
 
 						mui('.mui-popover').popover('hide');
@@ -247,6 +471,82 @@
 						location.href = "login.html";
 					})
 				})
+				// 意向资源保护
+				$(".updatebtn").click(function() {
+					let studentPhone = $("#studentPhone").val();
+					let studentName = $("#studentName").val();
+					if (studentPhone == "" || studentPhone == null || studentPhone == undefined || studentPhone == "null" ||
+						studentPhone ==
+						"undefined") {
+						mui.alert("电话号码不能为空", " ");
+						return;
+					}
+					if (!regList.phone.test(studentPhone)) {
+						mui.alert("请输入正确的电话号码", " ");
+						return;
+					}
+					let ajaxdata = {
+						name: $("#studentName").val(),
+						tel: studentPhone,
+						person: userInfo.phone
+					}
+					select_student(ajaxdata)
+				})
+				// 添加开发记录
+				$(".addBtn").click(function() {
+					let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+					
+					let datetime1 = new Date($("#addDeal_time").val().replace("T", " "));
+					let name = $("#addName").val(), //[string]		学员姓名	
+						studentPhone = $("#addTel").val(), //复制	[string]	是	学员电话号码	
+						person = userInfo.phone, //[string]	是	推荐人电话号码	
+						channel = $("#addChannel").val(), //[string]	是	资源获取途径	
+						one = $("#addOne").val(), //[string]		一次跟进情况	
+						two = $("#addTwo").val(), //[string]		两次跟进情况	
+						three = $("#addThree").val(), //[string]		三次跟进情况	
+						deal_time = (datetime1.getTime() / 1000), //	[string]		预计成交时间	
+						remark = $("#addRemark").val(); //[string]		备注
+						
+						var stop_time = $("#addDeal_time").val().replace("T", " ");
+						
+					if (studentPhone == "" || studentPhone == null || studentPhone == undefined || studentPhone == "null" ||
+						studentPhone ==
+						"undefined") {
+						mui.alert("请输入学员电话", " ");
+						$("#addTel").focus();
+						return;
+					}
+					if (!regList.phone.test(studentPhone)) {
+						mui.alert("电话号码格式错误\n请输入正确的电话号码", " ");
+						$("#addTel").focus();
+						return;
+					}
+					if (channel == "" || channel == null || channel == undefined || channel == "null" || channel == "undefined") {
+						mui.alert("请输入资源获取途径", " ");
+						$("#addChannel").focus();
+						return;
+					}
+					if(!CompareDate(current_time,stop_time)){
+						
+							mui.alert("预计成交时间需大于当前时间", " ");
+							$("#addDeal_time").focus();
+							return;
+					}
+					let ajaxdata = {
+						name: name, //[string]		学员姓名	
+						tel: studentPhone, //复制	[string]	是	学员电话号码	
+						person: person, //[string]	是	推荐人电话号码	
+						channel: channel, //[string]	是	资源获取途径	
+						one: one, //[string]		一次跟进情况	
+						two: two, //[string]		两次跟进情况	
+						three: three, //[string]		三次跟进情况	
+						deal_time: deal_time, //	[string]		预计成交时间	
+						remark: remark //[string]		备注
+					}
+					develop_add(ajaxdata)
+				})
+
+
 			})
 		</script>
 	</body>

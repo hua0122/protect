@@ -59,7 +59,7 @@
 .ztsfontcolor{
 	color:#0076FF ;
 }
-.index .mui-popup-button.mui-popup-button-bold:nth-of-type(2){
+.item3 .mui-popup-button.mui-popup-button-bold:nth-of-type(2){
 	color: red;
 }
 .mui-popup-button{
@@ -115,4 +115,23 @@
 }
 .mui-popup-inner{
 	padding: .25rem;
+}
+
+
+.editcon .input-colum{
+	display: flex;
+	border-radius: .08rem;
+	overflow: hidden;
+	margin-bottom: .18rem;
+}
+.editcon .input-row{
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
+.relieve{
+	color: #FF0000;
+}
+.mui-popup-button font,.mui-popup-text font{
+	color:#0076FF;
 }
