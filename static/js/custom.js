@@ -21,6 +21,7 @@ function inputblur() {
 	});
 }
 $(function() {
+	
 	response();
 	focusblurborder();
 })
@@ -92,4 +93,10 @@ function CompareDate(d1, d2) {
 //将日期格式化为两位，不足补零
 function fix(num, length) {
 	return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+}
+function toLogin(){
+	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
+		location.href = "login.html";
+	}
 }
