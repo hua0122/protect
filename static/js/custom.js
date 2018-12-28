@@ -24,8 +24,27 @@ $(function() {
 	
 	response();
 	focusblurborder();
+	inputblur();
 })
 
+function inputblur() {
+	$('input').on('focus', function(e) {
+		this.scrollIntoView();
+		document.getElementsByTagName('body')[0].scrollTop = document.getElementsByTagName('body')[0].scrollHeight;
+		document.getElementsByTagName('html')[0].scrollTop = document.getElementsByTagName('html')[0].scrollHeight;
+	});
+	$('input').on('blur', function() {
+		$('body').scrollTop(0);
+	});
+	$('textarea').on('focus', function(e) {
+		this.scrollIntoView();
+		document.getElementsByTagName('body')[0].scrollTop = document.getElementsByTagName('body')[0].scrollHeight;
+		document.getElementsByTagName('html')[0].scrollTop = document.getElementsByTagName('html')[0].scrollHeight;
+	});
+	$('textarea').on('blur', function() {
+		$('body').scrollTop(0);
+	});
+}
 function focusblurborder() {
 	$('.input-row').find("input").on('focus', function(e) {
 		if ($(this).parents(".input-colum").length == 1) {
