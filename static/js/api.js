@@ -430,6 +430,13 @@ function develop_add(ajaxdata) {
 	let data = ajaxPost(protect_develop_add, ajaxdata);
 	if (data.status == "200") {
 		mui.alert("添加成功", " ");
+		$("#addName").val(""); //[string]		学员姓名	
+		$("#addTel").val(""); //复制	[string]	是	学员电话号码	
+		$("#addChannel").val(""); //[string]	是	资源获取途径	
+		$("#addOne").val(""); //[string]		一次跟进情况	
+		$("#addTwo").val(""); //[string]		两次跟进情况	
+		$("#addThree").val(""); //[string]		三次跟进情况	
+		$("#addRemark").val(""); //[string]		备注
 	} else {
 
 		mui.alert(data.msg, " ");

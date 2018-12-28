@@ -21,7 +21,7 @@ function inputblur() {
 	});
 }
 $(function() {
-	
+
 	response();
 	focusblurborder();
 	inputblur();
@@ -45,6 +45,7 @@ function inputblur() {
 		$('body').scrollTop(0);
 	});
 }
+
 function focusblurborder() {
 	$('.input-row').find("input").on('focus', function(e) {
 		if ($(this).parents(".input-colum").length == 1) {
@@ -113,9 +114,17 @@ function CompareDate(d1, d2) {
 function fix(num, length) {
 	return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
 }
-function toLogin(){
+
+function toLogin() {
 	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
 		location.href = "login.html";
 	}
+}
+
+function dateCsh() {
+	var now = new Date();
+	var str = now.getFullYear() + "-" + fix((now.getMonth() + 1), 2) + "-" + fix(now.getDate(), 2) + "T" + fix(now.getHours(),
+		2) + ":" + fix(now.getMinutes(), 2);
+	return str;
 }

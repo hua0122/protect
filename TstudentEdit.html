@@ -98,10 +98,8 @@
 			// 页面加载
 			$(function() {
 				toLogin();
-				var now = new Date();
-				var str = now.getFullYear() + "-" + fix((now.getMonth() + 1), 2) + "-" + fix(now.getDate(), 2) + "T" + fix(now.getHours(),
-					2) + ":" + fix(now.getMinutes(), 2);
-				let current_time = str.replace("T", " ");
+				// 初始化时间
+				let current_time = dateCsh().replace("T", " ");;
 				develop_show();
 				$(".updatebtn").click(function() {
 
