@@ -117,7 +117,10 @@ function resource_add(ajaxdata) {
 	if (data.status == "200") {
 		mui.alert("添加成功", " ", function() {
 
-			$(".mui-popup").remove()
+			$(".mui-popup").remove();
+			
+			// 资源保护详细
+			protect_detail();
 		})
 	}
 }
@@ -227,8 +230,10 @@ function resource_replace(id) {
 	let data = ajaxPost(protect_resource_replace, ajaxdata);
 	if (data.status == "200") {
 		mui.alert("替换保护成员成功", " ");
+		
+		// 资源保护详细
+		protect_detail();
 	}
-	console.log(data)
 }
 
 // 解除资源保护
@@ -438,6 +443,9 @@ function develop_add(ajaxdata) {
 		$("#addTwo").val(""); //[string]		两次跟进情况	
 		$("#addThree").val(""); //[string]		三次跟进情况	
 		$("#addRemark").val(""); //[string]		备注
+		// 开发记录详细
+		develop_detail();
+
 	} else {
 
 		mui.alert(data.msg, " ");
