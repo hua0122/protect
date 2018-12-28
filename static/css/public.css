@@ -142,3 +142,7 @@
 	box-sizing: border-box;
 	margin-bottom: .15rem;
 }
+.mui-icon-arrowright {
+	font-size: .2rem;
+	line-height: .4rem;
+}
