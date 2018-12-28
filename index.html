@@ -152,18 +152,18 @@
 					<div class="tab-item">
 						<a href="RprotectionDetail.html" class="item">
 							<div>资源保护详细</div>
-							<div>已保护：<span>45</span></div>
-							<div>即将过期：<span>45</span></div>
+							<div>已保护：<span class="protect_total"></span></div>
+							<div>即将过期：<span class="protect_num"></span></div>
 						</a>
 						<a href="DrecordDetail.html" class="item">
 							<div>开发记录详细</div>
-							<div>已添加：<span>45</span></div>
-							<div>待跟进：<span>45</span></div>
+							<div>已添加：<span class="develop_total">45</span></div>
+							<div>待跟进：<span class="develop_num">45</span></div>
 						</a>
 						<a href="TstudentDetail.html" class="item">
 							<div>成交学员详细</div>
-							<div>已成交：<span>45</span></div>
-							<div>下属成交：<span>45</span></div>
+							<div>已成交：<span  class="deal_total">45</span></div>
+							<div>下属成交：<span  class="deal_num">45</span></div>
 						</a>
 					</div>
 				</div>
@@ -302,6 +302,10 @@
 
 				// 资源保护列表替换
 				resource_list("popo");
+				// 资源保护详细
+				protect_detail();
+				develop_detail();
+				deal_detail();
 				$(".index-TstudentDetail").css("width", $("body").width())
 				$(".index-TstudentDetail").on("click", function() {
 					$(".index-TstudentDetail").hide();

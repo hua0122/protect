@@ -28,6 +28,12 @@ let protect_resource_replace = "/api/protect/resource_replace";
 let protect_develop_add = "/api/protect/develop_add";
 // 解除资源保护
 let protect_resource_remove = "/api/protect/resource_remove";
+// 资源保护详细
+let protect_protect_detail = "/api/protect/protect_detail";
+// 开发记录详细
+let protect_develop_detail = "/api/protect/develop_detail";
+// 成交学员详细
+let protect_deal_detail = "/api/protect/deal_detail";
 
 // 发送验证码
 function sent_msg(tel) {
@@ -130,79 +136,81 @@ function resource_list(type) {
 		person: userInfo.phone
 	}
 	let data = ajaxPost(protect_resource_list, ajaxdata);
-	if(data.status=="200"){
-		
-	
-	let rlData = data.data.list;
-	let deactivationData = data.data.deactivation;
-	// 资源保护列表
-	let listSrc = "";
-	// 已脱保列表
-	let deactivationSrc = "";
-	let src = "";
-	let numStudent = 0;
-	for (var i = 0; i < rlData.length; i++) {
-		let time = rlData[i].time;
-		let valuesrc = "";
-		let titlesrc = "";
-		let dxSrc = "";
-		let daynumStudent = 0;
-		if (i == 0) {
-			titlesrc = '<div class="title">' +
-				'您共成交<span class="ztsfontcolor numStudent">28</span>名学员' +
-				'</div>';
+	if (data.status == "200") {
+		let rlData = data.data.list;
+		let deactivationData = data.data.deactivation;
+		// 资源保护列表
+		let listSrc = "";
+		// 已脱保列表
+		let deactivationSrc = "";
+		if (rlData == null || rlData == undefined || rlData == "" || rlData == "null") {
+			listSrc = "<div class='nodata box-shadow'>暂无数据</div>";
+			$(".TstudentDetail .content").html(listSrc);
+		} else {
+			let numStudent = 0;
+			for (var i = 0; i < rlData.length; i++) {
+				let time = rlData[i].time;
+				let valuesrc = "";
+				let titlesrc = "";
+				let dxSrc = "";
+				let daynumStudent = 0;
+				if (i == 0) {
+					titlesrc = '<div class="title">' +
+						'您共成交<span class="ztsfontcolor numStudent">28</span>名学员' +
+						'</div>';
+				}
+				if (i == (rlData.length - 1)) {
+					dxSrc = '<div class="dx">人家有底线啦</div>';
+				}
+				delete rlData[i]['time'];
+				$.each(rlData[i], function(index, value) {
+					valuesrc += '<div class="item ">' +
+						'<div class="name">' + value.name + '</div>' +
+						'<div class="tel">' + value.tel + '</div>' +
+						'<div class="relieve"><span class="time">' + value.deactivation_time.substring(0, value.deactivation_time.length -
+							3) + '</span><span class="line">|</span><span class="replace" id="' + value.id + '">' + jcth +
+						'<span class="mui-icon mui-icon-forward"></span></span></div>' +
+						'</div>';
+					numStudent++;
+					daynumStudent++;
+				});
+				listSrc = '<div class="column box-shadow">' +
+					titlesrc +
+					'<div class="item ztsfontcolor">' +
+					'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
+					'</div>' +
+					valuesrc +
+					dxSrc +
+					'</div>';
+			}
+
+
+			$(".TstudentDetail .content").html(listSrc);
+			$(".numStudent").text(numStudent);
 		}
-		if (i == (rlData.length - 1)) {
-			dxSrc = '<div class="dx">人家有底线啦</div>';
-		}
-		delete rlData[i]['time'];
-		$.each(rlData[i], function(index, value) {
-			valuesrc += '<div class="item ">' +
-				'<div class="name">' + value.name + '</div>' +
-				'<div class="tel">' + value.tel + '</div>' +
-				'<div class="relieve"><span class="time">' + value.deactivation_time.substring(0, value.deactivation_time.length -
-					3) + '</span><span class="line">|</span><span class="replace" id="' + value.id + '">' + jcth +
-				'<span class="mui-icon mui-icon-forward"></span></span></div>' +
+		if (type == "page") {
+			let srcda = "";
+			for (var i = 0; i < deactivationData.length; i++) {
+				srcda += '<div class="item ">' +
+					'<div>' + deactivationData[i].name + '</div>' +
+					'<div>' + deactivationData[i].tel + '</div>' +
+					'<div class="relieve deinsurance"><span class="time">' + deactivationData[i].deal_time +
+					'</span><span class="line">|</span>' +
+					deactivationData[i].status + '</div>' +
+					'</div>';
+			}
+
+			deactivationSrc = '<div class="column box-shadow">' +
+				'<div class="item ztsfontcolor">' +
+				'已脱保名单' +
+				'</div>' +
+				srcda +
+				'<div class="dx">人家有底线啦</div>' +
 				'</div>';
-			numStudent++;
-			daynumStudent++;
-		});
-		listSrc = '<div class="column box-shadow">' +
-			titlesrc +
-			'<div class="item ztsfontcolor">' +
-			'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
-			'</div>' +
-			valuesrc +
-			dxSrc +
-			'</div>';
-	}
+			$(".TstudentDetail .content").append(deactivationSrc);
+			$(".TstudentDetail .content .column").eq($(".TstudentDetail .content .column").length - 2).find(".dx").remove();
 
-
-	$(".TstudentDetail .content").html(listSrc);
-	$(".numStudent").text(numStudent);
-	if (type == "page") {
-		let srcda = "";
-		for (var i = 0; i < deactivationData.length; i++) {
-			srcda += '<div class="item ">' +
-				'<div>' + deactivationData[i].name + '</div>' +
-				'<div>' + deactivationData[i].tel + '</div>' +
-				'<div class="relieve deinsurance"><span class="time">' + deactivationData[i].deal_time +
-				'</span><span class="line">|</span>' +
-				deactivationData[i].status + '</div>' +
-				'</div>';
 		}
-
-		deactivationSrc = '<div class="column box-shadow">' +
-			'<div class="item ztsfontcolor">' +
-			'已脱保名单' +
-			'</div>' +
-			srcda +
-			'<div class="dx">人家有底线啦</div>' +
-			'</div>';
-		$(".TstudentDetail .content").append(deactivationSrc);
-		$(".TstudentDetail .content .column").eq($(".TstudentDetail .content .column").length - 2).find(".dx").remove();
-
-	}
 	}
 }
 
@@ -225,7 +233,7 @@ function resource_replace(id) {
 
 // 解除资源保护
 function resource_remove(id) {
-	
+
 	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone,
@@ -249,43 +257,48 @@ function deal_list() {
 	}
 	let data = ajaxPost(protect_deal_list, ajaxdata);
 	let src = "";
-	let numStudent = 0;
-	for (var i = 0; i < data.data.length; i++) {
+	if (data.data.length == 0) {
+		src = "<div class='nodata box-shadow'>暂无数据</div>";
+		$(".item1").html(src)
+	} else {
+		let numStudent = 0;
+		for (var i = 0; i < data.data.length; i++) {
 
-		let time = data.data[i].time;
-		let valuesrc = "";
-		let titlesrc = "";
-		let dxSrc = "";
-		let daynumStudent = 0;
-		if (i == 0) {
-			titlesrc = '<div class="title">' +
-				'您共成交<span class="ztsfontcolor numStudent">28</span>名学员' +
+			let time = data.data[i].time;
+			let valuesrc = "";
+			let titlesrc = "";
+			let dxSrc = "";
+			let daynumStudent = 0;
+			if (i == 0) {
+				titlesrc = '<div class="title">' +
+					'您共成交<span class="ztsfontcolor numStudent">28</span>名学员' +
+					'</div>';
+			}
+			if (i == (data.data.length - 1)) {
+				dxSrc = '<div class="dx">人家有底线啦</div>';
+			}
+			delete data.data[i]['time'];
+			$.each(data.data[i], function(index, value) {
+				valuesrc += '<div class="item ">' +
+					'<div>' + value.name + '</div>' +
+					'<div>' + value.tel + '</div>' +
+					'<div>' + value.school_name + '</div>' +
+					'</div>';
+				numStudent++;
+				daynumStudent++;
+			});
+			src += '<div class="column box-shadow">' +
+				titlesrc +
+				'<div class="item ztsfontcolor">' +
+				'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
+				'</div>' +
+				valuesrc +
+				dxSrc +
 				'</div>';
 		}
-		if (i == (data.data.length - 1)) {
-			dxSrc = '<div class="dx">人家有底线啦</div>';
-		}
-		delete data.data[i]['time'];
-		$.each(data.data[i], function(index, value) {
-			valuesrc += '<div class="item ">' +
-				'<div>' + value.name + '</div>' +
-				'<div>' + value.tel + '</div>' +
-				'<div>' + value.school_name + '</div>' +
-				'</div>';
-			numStudent++;
-			daynumStudent++;
-		});
-		src += '<div class="column box-shadow">' +
-			titlesrc +
-			'<div class="item ztsfontcolor">' +
-			'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
-			'</div>' +
-			valuesrc +
-			dxSrc +
-			'</div>';
+		$(".item1").html(src)
+		$(".numStudent").text(numStudent);
 	}
-	$(".item1").html(src)
-	$(".numStudent").text(numStudent);
 }
 
 function deal_team() {
@@ -296,10 +309,15 @@ function deal_team() {
 		person: userInfo.phone
 	}
 	let data = ajaxPost(protect_deal_team, ajaxdata);
-		let src = "";
+
+	let src = "";
+	if (data.data.length == 0) {
+		src = "<div class='nodata box-shadow'>暂无数据</div>";
+		$(".item2").html(src)
+	} else {
 		let numStudent = 0;
 		for (var i = 0; i < data.data.length; i++) {
-	
+
 			let time = data.data[i].time;
 			let valuesrc = "";
 			let titlesrc = "";
@@ -317,38 +335,40 @@ function deal_team() {
 			$.each(data.data[i], function(index, value) {
 				let personnumStudent = 0;
 
-				let person=value['person'];
-			delete value['person'];
-			let value1src="";
-			$.each(value,function(index1,value1){
-				 value1src+= '<div class="item ">' +
-					'<div>' + value1.name + '</div>' +
-					'<div>' + value1.tel + '</div>' +
-					'<div>' + value1.school_name + '</div>' +
-					'</div>';
-					
+				let person = value['person'];
+				delete value['person'];
+				let value1src = "";
+				$.each(value, function(index1, value1) {
+					value1src += '<div class="item ">' +
+						'<div>' + value1.name + '</div>' +
+						'<div>' + value1.tel + '</div>' +
+						'<div>' + value1.school_name + '</div>' +
+						'</div>';
+
 					numStudent++;
 					daynumStudent++;
 					personnumStudent++;
-			})
-				valuesrc+=
-				'<div class="item fu-item ztsfontcolor">'+
-					'<span><span class="time">'+person+'&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text6">共'+personnumStudent+'名</span></span>'+
-				'</div>'+value1src;
+				})
+				valuesrc +=
+					'<div class="item fu-item ztsfontcolor">' +
+					'<span><span class="time">' + person + '&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text6">共' + personnumStudent +
+					'名</span></span>' +
+					'</div>' + value1src;
 			});
 			src += '<div class="column box-shadow">' +
 				titlesrc +
-				'<div class="item ztsfontcolor">'+
-					'<div class="fu-title">'+
-					'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
-						'</div>'+
-				'</div>'+
+				'<div class="item ztsfontcolor">' +
+				'<div class="fu-title">' +
+				'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
+				'</div>' +
+				'</div>' +
 				valuesrc +
 				dxSrc +
 				'</div>';
 		}
 		$(".item2").html(src)
 		$(".numStudent").text(numStudent);
+	}
 }
 // 开发记录列表
 function develop_list() {
@@ -358,46 +378,50 @@ function develop_list() {
 		person: userInfo.phone
 	}
 	let data = ajaxPost(protect_develop_list, ajaxdata);
-	console.log(data)
 
 	let src = "";
-	let numStudent = 0;
-	for (var i = 0; i < data.data.length; i++) {
+	if (data.data.length == 0) {
+		src = "<div class='nodata box-shadow'>暂无数据</div>";
+		$(".content").html(src)
+	} else {
+		let numStudent = 0;
+		for (var i = 0; i < data.data.length; i++) {
 
-		let time = data.data[i].time;
-		let valuesrc = "";
-		let titlesrc = "";
-		let dxSrc = "";
-		let daynumStudent = 0;
-		if (i == 0) {
-			titlesrc = '<div class="title">' +
-				'共 <span class="ztsfontcolor numStudent">28</span> 名保护成员' +
+			let time = data.data[i].time;
+			let valuesrc = "";
+			let titlesrc = "";
+			let dxSrc = "";
+			let daynumStudent = 0;
+			if (i == 0) {
+				titlesrc = '<div class="title">' +
+					'共 <span class="ztsfontcolor numStudent">28</span> 名保护成员' +
+					'</div>';
+			}
+			if (i == (data.data.length - 1)) {
+				dxSrc = '<div class="dx">人家有底线啦</div>';
+			}
+			delete data.data[i]['time'];
+			$.each(data.data[i], function(index, value) {
+				valuesrc += '<div class="item ">' +
+					'<div>' + value.name + '</div>' +
+					'<div>' + value.tel + '</div>' +
+					'<div class="edit" id=' + value.id + '>编辑<span class="mui-icon mui-icon-arrowright"></span></div>' +
+					'</div>';
+				numStudent++;
+				daynumStudent++;
+			});
+			src += '<div class="column box-shadow">' +
+				titlesrc +
+				'<div class="item ztsfontcolor">' +
+				'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
+				'</div>' +
+				valuesrc +
+				dxSrc +
 				'</div>';
 		}
-		if (i == (data.data.length - 1)) {
-			dxSrc = '<div class="dx">人家有底线啦</div>';
-		}
-		delete data.data[i]['time'];
-		$.each(data.data[i], function(index, value) {
-			valuesrc += '<div class="item ">' +
-				'<div>' + value.name + '</div>' +
-				'<div>' + value.tel + '</div>' +
-				'<div class="edit" id=' + value.id + '>编辑<span class="mui-icon mui-icon-arrowright"></span></div>' +
-				'</div>';
-			numStudent++;
-			daynumStudent++;
-		});
-		src += '<div class="column box-shadow">' +
-			titlesrc +
-			'<div class="item ztsfontcolor">' +
-			'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
-			'</div>' +
-			valuesrc +
-			dxSrc +
-			'</div>';
+		$(".content").html(src)
+		$(".numStudent").text(numStudent);
 	}
-	$(".content").html(src)
-	$(".numStudent").text(numStudent);
 }
 
 // 添加开发记录
@@ -420,27 +444,69 @@ function develop_show() {
 		person: userInfo.phone
 	}
 	let data = ajaxPost(protect_develop_show, ajaxdata);
-	
+
 	if (data.status == "200") {
 		$("#selName").val(data.data.name); //复制[string] 学员姓名
-		$("#selTel").val(data.data.tel);//[string] 是 学员电话号码
-		$("#selChannel").val(data.data.channel);//[string] 是 资源获取途径
-		$("#selOne").val(data.data.one);//[string] 一次跟进情况
-		$("#selTwo").val(data.data.two);//[string] 两次跟进情况
-		$("#selThree").val(data.data.three);//[string] 三次跟进情况
-		$("#selDeal_time").val(settiem(data.data.deal_time));//[string] 预计成交时间
+		$("#selTel").val(data.data.tel); //[string] 是 学员电话号码
+		$("#selChannel").val(data.data.channel); //[string] 是 资源获取途径
+		$("#selOne").val(data.data.one); //[string] 一次跟进情况
+		$("#selTwo").val(data.data.two); //[string] 两次跟进情况
+		$("#selThree").val(data.data.three); //[string] 三次跟进情况
+		$("#selDeal_time").val(settiem(data.data.deal_time)); //[string] 预计成交时间
 		$("#selRemark").val(data.data.remark);
 	}
 }
 
 // 开发记录编辑
-function develop_edit(ajaxdata){
+function develop_edit(ajaxdata) {
 	let data = ajaxPost(protect_develop_edit, ajaxdata);
 	if (data.status == "200") {
-			mui.alert("修改成功", " ");
-			history.back();
-		} else {
-	
-			mui.alert(data.msg, " ");
+		mui.alert("修改成功", " ");
+		history.back();
+	} else {
+
+		mui.alert(data.msg, " ");
+	}
+}
+// 资源保护详细
+function protect_detail(){
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
+	let ajaxdata = {
+		person: userInfo.phone
+	}
+		let data = ajaxPost(protect_protect_detail, ajaxdata);
+		if(data.status=="200"){
+			
+			$(".protect_total").html(data.data.total)
+			$(".protect_num").html(data.data.num)
 		}
 }
+// 开发记录详细
+function develop_detail(){
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
+	let ajaxdata = {
+		person: userInfo.phone
+	}
+		let data = ajaxPost(protect_develop_detail, ajaxdata);
+		if(data.status=="200"){
+			
+			$(".develop_total").html(data.data.total)
+			$(".develop_num").html(data.data.num)
+		}
+}// 成交学员详细
+function deal_detail(){
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
+	let ajaxdata = {
+		person: userInfo.phone
+	}
+		let data = ajaxPost(protect_deal_detail, ajaxdata);
+		if(data.status=="200"){
+			
+			$(".deal_total").html(data.data.total)
+			$(".deal_num").html(data.data.num)
+		}
+}
+// // 开发记录详细
+// let protect_develop_detail = "/api/protect/develop_detail";
+// // 成交学员详细
+// let protect_deal_detail = "/api/protect/deal_detail";
