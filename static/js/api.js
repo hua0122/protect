@@ -56,8 +56,11 @@ function sent_msg(tel) {
 function login(ajaxdata) {
 	let data = ajaxPost(protect_login, ajaxdata);
 	if (data.status == "200") {
-		localStorage.setItem("p_userInfo", JSON.stringify(data.data))
-		location.href = "index.html";
+
+		mui.alert("登录成功", " ", function() {
+			localStorage.setItem("p_userInfo", JSON.stringify(data.data))
+			location.href = "index.html";
+		})
 	} else {
 		mui.alert(data.msg, " ")
 	}
@@ -75,13 +78,15 @@ function set_code(ajaxdata) {
 
 	let data = ajaxPost(protect_set_code, ajaxdata);
 
-	mui.alert(data.msg, " ")
 	if (data.status == "200") {
 		$(".setCode").removeClass("ztsbuttom");
 		$(".setCode").css("pointer-events", "none");
 		$("#recomcode").attr("disabled", true);
 		$(".updetaCode").text("修改推荐码");
 		$(".updetaCode").css("width", ".65rem");
+		mui.alert("设置推荐码成功", " ")
+	}else{
+		mui.alert(data.msg, " ")
 	}
 }
 
@@ -117,7 +122,7 @@ function resource_add(ajaxdata) {
 		mui.alert("添加成功", " ", function() {
 
 			$(".mui-popup").remove();
-			
+
 			// 资源保护详细
 			protect_detail();
 		})
@@ -229,7 +234,7 @@ function resource_replace(id) {
 	let data = ajaxPost(protect_resource_replace, ajaxdata);
 	if (data.status == "200") {
 		mui.alert("替换保护成员成功", " ");
-		
+
 		// 资源保护详细
 		protect_detail();
 	}
@@ -521,4 +526,3 @@ function deal_detail() {
 		$(".deal_num").html(data.data.num)
 	}
 }
-
