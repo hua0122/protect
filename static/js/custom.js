@@ -95,7 +95,7 @@ function fix(num, length) {
 	return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
 }
 function toLogin(){
-	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
 		location.href = "login.html";
 	}

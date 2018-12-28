@@ -50,7 +50,7 @@ function sent_msg(tel) {
 function login(ajaxdata) {
 	let data = ajaxPost(protect_login, ajaxdata);
 	if (data.status == "200") {
-		localStorage.setItem("userInfo", JSON.stringify(data.data))
+		localStorage.setItem("p_userInfo", JSON.stringify(data.data))
 		location.href = "index.html";
 	} else {
 		mui.alert(data.msg, " ")
@@ -125,11 +125,14 @@ function resource_list(type) {
 	if (type == "page") {
 		jcth = "解除";
 	}
-	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone
 	}
 	let data = ajaxPost(protect_resource_list, ajaxdata);
+	if(data.status=="200"){
+		
+	
 	let rlData = data.data.list;
 	let deactivationData = data.data.deactivation;
 	// 资源保护列表
@@ -200,12 +203,13 @@ function resource_list(type) {
 		$(".TstudentDetail .content .column").eq($(".TstudentDetail .content .column").length - 2).find(".dx").remove();
 
 	}
+	}
 }
 
 // 资源保护人员替换
 function resource_replace(id) {
 
-	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone,
 		id: id,
@@ -222,7 +226,7 @@ function resource_replace(id) {
 // 解除资源保护
 function resource_remove(id) {
 	
-	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone,
 		id: id,
@@ -239,7 +243,7 @@ function resource_remove(id) {
 // 成交学员详细列表
 function deal_list() {
 
-	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone
 	}
@@ -287,7 +291,7 @@ function deal_list() {
 function deal_team() {
 
 
-	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone
 	}
@@ -349,7 +353,7 @@ function deal_team() {
 // 开发记录列表
 function develop_list() {
 
-	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone
 	}
@@ -410,7 +414,7 @@ function develop_add(ajaxdata) {
 // 开发记录查询
 function develop_show() {
 
-	let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		id: getQueryString("id"),
 		person: userInfo.phone

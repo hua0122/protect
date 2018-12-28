@@ -289,7 +289,7 @@
 			$(function() {
 				toLogin();
 				// 获取用户信息
-				let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+				let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 
 				$(".username").html(userInfo.username);
 				$("#username").val(userInfo.username);
@@ -299,7 +299,7 @@
 					2) + ":" + fix(now.getMinutes(), 2);
 				$("#addDeal_time").val(str);
 				let current_time = str.replace("T", " ");
-				
+
 				// 资源保护列表替换
 				resource_list("popo");
 				$(".index-TstudentDetail").css("width", $("body").width())
@@ -323,40 +323,42 @@
 					})
 
 				})
-			
+
 
 				//获得slider插件对象
 				var gallery = mui('.mui-slider');
 				let get_code_data = get_code(userInfo.phone);
+				if (get_code_data.status == "200") {
 
-				if (get_code_data.data.code == null || get_code_data.data.code == "null" || get_code_data.data.code == undefined ||
-					get_code_data.data.code == "undefined" || get_code_data.data.code == "") {
-					mui.alert("请先设置推荐码", " ", "带我去设置", function() {
-						gallery.slider().gotoItem(2);
-						$("#recomcode").attr("disabled", false);
+					if (get_code_data.data.code == null || get_code_data.data.code == "null" || get_code_data.data.code == undefined ||
+						get_code_data.data.code == "undefined" || get_code_data.data.code == "") {
+						mui.alert("请先设置推荐码", " ", "带我去设置", function() {
+							gallery.slider().gotoItem(2);
+							$("#recomcode").attr("disabled", false);
+							$(".footafter").css({
+								"transition": ".5s",
+								"left": "2.5rem",
+							})
+							$(".foot .item.active").css({
+								"transition": "1s"
+							})
+							setTimeout(function() {
+
+								$("input#recomcode").focus();
+							}, 1000)
+						})
+					} else {
+
+						$("#recomcode").val(get_code_data.data.code);
 						$(".footafter").css({
 							"transition": ".5s",
-							"left": "2.5rem",
 						})
-						$(".foot .item.active").css({
-							"transition": "1s"
-						})
-						setTimeout(function() {
-
-							$("input#recomcode").focus();
-						}, 1000)
-					})
-				} else {
-
-					$("#recomcode").val(get_code_data.data.code);
-					$(".footafter").css({
-						"transition": ".5s",
-					})
-					$(".setCode").removeClass("ztsbuttom");
-					$(".setCode").css("pointer-events", "none");
-					$("#recomcode").attr("disabled", true);
-					$(".updetaCode").text("修改推荐码");
-					$(".updetaCode").css("width", ".75rem");
+						$(".setCode").removeClass("ztsbuttom");
+						$(".setCode").css("pointer-events", "none");
+						$("#recomcode").attr("disabled", true);
+						$(".updetaCode").text("修改推荐码");
+						$(".updetaCode").css("width", ".75rem");
+					}
 				}
 				// 选项卡切换
 				$(".foot .item").click(function() {
@@ -494,8 +496,8 @@
 				})
 				// 添加开发记录
 				$(".addBtn").click(function() {
-					let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-					
+					let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
+
 					let datetime1 = new Date($("#addDeal_time").val().replace("T", " "));
 					let name = $("#addName").val(), //[string]		学员姓名	
 						studentPhone = $("#addTel").val(), //复制	[string]	是	学员电话号码	
@@ -506,9 +508,9 @@
 						three = $("#addThree").val(), //[string]		三次跟进情况	
 						deal_time = (datetime1.getTime() / 1000), //	[string]		预计成交时间	
 						remark = $("#addRemark").val(); //[string]		备注
-						
-						var stop_time = $("#addDeal_time").val().replace("T", " ");
-						
+
+					var stop_time = $("#addDeal_time").val().replace("T", " ");
+
 					if (studentPhone == "" || studentPhone == null || studentPhone == undefined || studentPhone == "null" ||
 						studentPhone ==
 						"undefined") {
@@ -526,11 +528,11 @@
 						$("#addChannel").focus();
 						return;
 					}
-					if(!CompareDate(current_time,stop_time)){
-						
-							mui.alert("预计成交时间需大于当前时间", " ");
-							$("#addDeal_time").focus();
-							return;
+					if (!CompareDate(current_time, stop_time)) {
+
+						mui.alert("预计成交时间需大于当前时间", " ");
+						$("#addDeal_time").focus();
+						return;
 					}
 					let ajaxdata = {
 						name: name, //[string]		学员姓名	

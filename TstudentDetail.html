@@ -58,7 +58,7 @@
 			// 页面加载
 			$(function() {
 				toLogin();
-				let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+				let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 				if (userInfo.type == "children") {
 					$(".TstudentDetail .foot").hide();
 					$(".item2").remove();
