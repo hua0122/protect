@@ -196,7 +196,7 @@ function resource_list(type) {
 				srcda += '<div class="item ">' +
 					'<div>' + deactivationData[i].name + '</div>' +
 					'<div>' + deactivationData[i].tel + '</div>' +
-					'<div class="relieve deinsurance"><span class="time">' + deactivationData[i].deal_time +
+					'<div class="relieve deinsurance"><span class="time">' + deactivationData[i].deactivation_time +
 					'</span><span class="line">|</span>' +
 					deactivationData[i].status + '</div>' +
 					'</div>';
