@@ -430,8 +430,7 @@ function develop_add(ajaxdata) {
 	let data = ajaxPost(protect_develop_add, ajaxdata);
 	if (data.status == "200") {
 		mui.alert("添加成功", " ");
-		$("input").blur();
-		$("textarea").blur();
+		$(".input-colum").removeClass("border-shadow");
 		$("#addName").val(""); //[string]		学员姓名	
 		$("#addTel").val(""); //复制	[string]	是	学员电话号码	
 		$("#addChannel").val(""); //[string]	是	资源获取途径	
@@ -478,42 +477,42 @@ function develop_edit(ajaxdata) {
 	}
 }
 // 资源保护详细
-function protect_detail(){
+function protect_detail() {
 	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone
 	}
-		let data = ajaxPost(protect_protect_detail, ajaxdata);
-		if(data.status=="200"){
-			
-			$(".protect_total").html(data.data.total)
-			$(".protect_num").html(data.data.num)
-		}
+	let data = ajaxPost(protect_protect_detail, ajaxdata);
+	if (data.status == "200") {
+
+		$(".protect_total").html(data.data.total)
+		$(".protect_num").html(data.data.num)
+	}
 }
 // 开发记录详细
-function develop_detail(){
+function develop_detail() {
 	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone
 	}
-		let data = ajaxPost(protect_develop_detail, ajaxdata);
-		if(data.status=="200"){
-			
-			$(".develop_total").html(data.data.total)
-			$(".develop_num").html(data.data.num)
-		}
-}// 成交学员详细
-function deal_detail(){
+	let data = ajaxPost(protect_develop_detail, ajaxdata);
+	if (data.status == "200") {
+
+		$(".develop_total").html(data.data.total)
+		$(".develop_num").html(data.data.num)
+	}
+} // 成交学员详细
+function deal_detail() {
 	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let ajaxdata = {
 		person: userInfo.phone
 	}
-		let data = ajaxPost(protect_deal_detail, ajaxdata);
-		if(data.status=="200"){
-			
-			$(".deal_total").html(data.data.total)
-			$(".deal_num").html(data.data.num)
-		}
+	let data = ajaxPost(protect_deal_detail, ajaxdata);
+	if (data.status == "200") {
+
+		$(".deal_total").html(data.data.total)
+		$(".deal_num").html(data.data.num)
+	}
 }
 // // 开发记录详细
 // let protect_develop_detail = "/api/protect/develop_detail";
