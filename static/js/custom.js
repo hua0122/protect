@@ -24,7 +24,6 @@ $(function() {
 
 	response();
 	focusblurborder();
-	inputblur();
 })
 
 function inputblur() {
