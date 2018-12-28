@@ -165,7 +165,18 @@
 	color: #0076FF;
 	box-sizing: border-box;
 }
-
+.TstudentDetail .column .item .name{
+	flex: .5;
+}
+.TstudentDetail .column .item .relieve{
+	
+	flex: 1.5;
+	line-height: .2rem;
+}
+.TstudentDetail .column .item .deinsurance .time{
+	
+	text-align: center;
+}
 .TstudentDetail .deinsurance {
 	color: #949494;
 }

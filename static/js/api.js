@@ -194,8 +194,8 @@ function resource_list(type) {
 			let srcda = "";
 			for (var i = 0; i < deactivationData.length; i++) {
 				srcda += '<div class="item ">' +
-					'<div>' + deactivationData[i].name + '</div>' +
-					'<div>' + deactivationData[i].tel + '</div>' +
+					'<div class="name">' + deactivationData[i].name + '</div>' +
+					'<div  class="tel">' + deactivationData[i].tel + '</div>' +
 					'<div class="relieve deinsurance"><span class="time">' + deactivationData[i].deactivation_time +
 					'</span><span class="line">|</span>' +
 					deactivationData[i].status + '</div>' +
@@ -284,8 +284,8 @@ function deal_list() {
 			delete data.data[i]['time'];
 			$.each(data.data[i], function(index, value) {
 				valuesrc += '<div class="item ">' +
-					'<div>' + value.name + '</div>' +
-					'<div>' + value.tel + '</div>' +
+					'<div class="name">' + value.name + '</div>' +
+					'<div class="tel">' + value.tel + '</div>' +
 					'<div>' + value.school_name + '</div>' +
 					'</div>';
 				numStudent++;
@@ -344,8 +344,8 @@ function deal_team() {
 				let value1src = "";
 				$.each(value, function(index1, value1) {
 					value1src += '<div class="item ">' +
-						'<div>' + value1.name + '</div>' +
-						'<div>' + value1.tel + '</div>' +
+						'<div  class="name">' + value1.name + '</div>' +
+						'<div  class="tel">' + value1.tel + '</div>' +
 						'<div>' + value1.school_name + '</div>' +
 						'</div>';
 
@@ -521,7 +521,4 @@ function deal_detail() {
 		$(".deal_num").html(data.data.num)
 	}
 }
-// // 开发记录详细
-// let protect_develop_detail = "/api/protect/develop_detail";
-// // 成交学员详细
-// let protect_deal_detail = "/api/protect/deal_detail";
+
