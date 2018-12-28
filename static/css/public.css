@@ -45,8 +45,12 @@
 	background: none;
 	margin: 0;
 	font-size: .13rem;
+	line-height: .3rem;
 }
-
+.input-row textarea {
+	line-height: .2rem;
+	box-sizing: border-box;
+}
 .input-row input::-webkit-input-placeholder {
 	font-size: .13rem;
 	color: #666;

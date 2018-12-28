@@ -63,7 +63,7 @@
 													<input type="text" class="input" id="addName" placeholder="请输入">
 												</div>
 												<div class="input-row">
-													<label><i class="relieve">*</i>电话</label>
+													<label style="flex: .5;text-align: left;"><i class="relieve">*</i>电话</label>
 													<input type="text" class="input" id="addTel" placeholder="请输入">
 												</div>
 											</div>
@@ -471,7 +471,7 @@
 					window.location.reload();
 				})
 				$(".Logout").click(function() {
-					localStorage.removeItem("userInfo");
+					localStorage.removeItem("p_userInfo");
 
 					mui.alert("退出登录", " ", function() {
 						location.href = "login.html";
