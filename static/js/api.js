@@ -158,7 +158,7 @@ function resource_list(type) {
 				let daynumStudent = 0;
 				if (i == 0) {
 					titlesrc = '<div class="title">' +
-						'您共成交<span class="ztsfontcolor numStudent">28</span>名学员' +
+						'共<span class="ztsfontcolor numStudent">28</span>名保护成员' +
 						'</div>';
 				}
 				if (i == (rlData.length - 1)) {
