@@ -176,7 +176,7 @@ function resource_list(type) {
 					numStudent++;
 					daynumStudent++;
 				});
-				listSrc = '<div class="column box-shadow">' +
+				listSrc += '<div class="column box-shadow">' +
 					titlesrc +
 					'<div class="item ztsfontcolor">' +
 					'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
