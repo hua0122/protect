@@ -18,9 +18,9 @@
 		<script src="static/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/custom.js" type="text/javascript" charset="utf-8"></script>
 	</head>
-	<body>
+	<body class="index">
 		<section class="  TstudentDetail">
-			<div class="main">
+			<div class="main" style="padding-bottom: .06rem;">
 				<div class="contentbox ">
 					<div class="content">
 						<div class="mui-slider">
@@ -72,12 +72,12 @@
 				deal_team();
 				//获得slider插件对象
 				var gallery = mui('.mui-slider');
-				$(".content").css("height", ($(".mui-slider-item").eq(0).height() + 10) + "px");
+				$(".content").css("height", ($(".mui-slider-item").eq(0).height() + 50) + "px");
 
 				// 选项卡切换
 				$(".foot .item").click(function() {
 					$('body').scrollTop(0);
-					$(".content").css("height", ($(".mui-slider-item").eq($(this).index()).height() + 10) + "px");
+					$(".content").css("height", ($(".mui-slider-item").eq($(this).index()).height() + 50) + "px");
 
 					if ($(this).index() == 0) {
 						$(".footafter").css({
@@ -97,7 +97,7 @@
 				document.querySelector('.mui-slider').addEventListener('slide', function(event) {
 
 					$('body').scrollTop(0);
-					$(".content").css("height", ($(".mui-slider-item").eq(event.detail.slideNumber).height() + 10) + "px");
+					$(".content").css("height", ($(".mui-slider-item").eq(event.detail.slideNumber).height() + 50) + "px");
 					if (event.detail.slideNumber == 0) {
 						$(".footafter").css({
 							"left": ".4rem"

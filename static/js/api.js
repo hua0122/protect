@@ -85,7 +85,7 @@ function set_code(ajaxdata) {
 		$(".updetaCode").text("修改推荐码");
 		$(".updetaCode").css("width", ".65rem");
 		mui.alert("设置推荐码成功", " ")
-	}else{
+	} else {
 		mui.alert(data.msg, " ")
 	}
 }
@@ -150,17 +150,21 @@ function resource_list(type) {
 		let listSrc = "";
 		// 已脱保列表
 		let deactivationSrc = "";
+		let valuesrc = "";
+		let time = "";
+		let titlesrc = "";
+		let dxSrc = "";
+		let daynumStudent = 0;
+		let numStudent = 0;
+		let tbtiem="";
 		if (rlData == null || rlData == undefined || rlData == "" || rlData == "null") {
-			listSrc = "<div class='nodata box-shadow'>暂无数据</div>";
-			$(".TstudentDetail .content").html(listSrc);
+			valuesrc = "<div class='item'>暂无数据</div>";
+			tbtiem='<span>保护名单</span>';
+
 		} else {
-			let numStudent = 0;
 			for (var i = 0; i < rlData.length; i++) {
-				let time = rlData[i].time;
-				let valuesrc = "";
-				let titlesrc = "";
-				let dxSrc = "";
-				let daynumStudent = 0;
+
+				time = rlData[i].time;
 				if (i == 0) {
 					titlesrc = '<div class="title">' +
 						'共<span class="ztsfontcolor numStudent">28</span>名保护成员' +
@@ -181,38 +185,47 @@ function resource_list(type) {
 					numStudent++;
 					daynumStudent++;
 				});
-				listSrc += '<div class="column box-shadow">' +
-					titlesrc +
-					'<div class="item ztsfontcolor">' +
-					'<span><span class="time">' + time + '</span><span class="text6">共' + daynumStudent + '名</span></span>' +
-					'</div>' +
-					valuesrc +
-					dxSrc +
-					'</div>';
+
 			}
+			tbtiem='<span><span class="time">' + time + '</span><span class="text6">脱保</span></span>';
 
-
-			$(".TstudentDetail .content").html(listSrc);
-			$(".numStudent").text(numStudent);
 		}
+		listSrc += '<div class="column box-shadow">' +
+			titlesrc +
+			'<div class="item ztsfontcolor">' +
+			 tbtiem+
+			'</div>' +
+			valuesrc +
+			dxSrc +
+			'</div>';
+		$(".TstudentDetail .content").html(listSrc);
+		$(".numStudent").text(numStudent);
 		if (type == "page") {
 			let srcda = "";
-			for (var i = 0; i < deactivationData.length; i++) {
-				srcda += '<div class="item ">' +
-					'<div class="name">' + deactivationData[i].name + '</div>' +
-					'<div  class="tel">' + deactivationData[i].tel + '</div>' +
-					'<div class="relieve deinsurance"><span class="time">' + deactivationData[i].deactivation_time +
-					'</span><span class="line">|</span>' +
-					deactivationData[i].status + '</div>' +
-					'</div>';
-			}
+			let dx = "";
+			if (deactivationData == null || deactivationData == undefined || deactivationData == "" || deactivationData ==
+				"null") {
+				srcda = "<div class='nodata item'>暂无数据</div>";
+			} else {
 
+				for (var i = 0; i < deactivationData.length; i++) {
+					srcda += '<div class="item ">' +
+						'<div class="name">' + deactivationData[i].name + '</div>' +
+						'<div  class="tel">' + deactivationData[i].tel + '</div>' +
+						'<div class="relieve deinsurance"><span class="time">' + deactivationData[i].deactivation_time +
+						'</span><span class="line">|</span>' +
+						deactivationData[i].status + '</div>' +
+						'</div>';
+
+				}
+				dx = '<div class="dx">人家有底线啦</div>';
+			}
 			deactivationSrc = '<div class="column box-shadow">' +
 				'<div class="item ztsfontcolor">' +
 				'已脱保名单' +
 				'</div>' +
 				srcda +
-				'<div class="dx">人家有底线啦</div>' +
+				dx +
 				'</div>';
 			$(".TstudentDetail .content").append(deactivationSrc);
 			$(".TstudentDetail .content .column").eq($(".TstudentDetail .content .column").length - 2).find(".dx").remove();
@@ -412,8 +425,8 @@ function develop_list() {
 			delete data.data[i]['time'];
 			$.each(data.data[i], function(index, value) {
 				valuesrc += '<div class="item ">' +
-					'<div>' + value.name + '</div>' +
-					'<div>' + value.tel + '</div>' +
+					'<div class="name">' + value.name + '</div>' +
+					'<div class="tel">' + value.tel + '</div>' +
 					'<div class="edit" id=' + value.id + '>编辑<span class="mui-icon mui-icon-arrowright"></span></div>' +
 					'</div>';
 				numStudent++;

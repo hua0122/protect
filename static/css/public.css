@@ -23,7 +23,7 @@
 	width: 100%;
 	height: .3rem;
 	line-height: .3rem;
-	background: rgba(228, 228, 228, 1);
+	background:rgba(242, 242, 242, 1);
 	display: flex;
 	justify-content: center;
 	text-align: center;
@@ -77,11 +77,11 @@
 }
 
 .box-shadow{
-	box-shadow: 0px 0px .05rem .02rem rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349019607843137);
 }
 .border-shadow{
 	border: 1px solid #0076FF;
-	box-shadow: 0px 0px .05rem .01rem rgba(0,0,0,0.1);
+	box-shadow:0px 0px 5px rgba(0, 0, 0, 0.349019607843137);
 }
 .dx{
 	width: 100%;
@@ -149,4 +149,15 @@
 .mui-icon-arrowright {
 	font-size: .2rem;
 	line-height: .4rem;
+}
+.index {
+	background: rgba(228, 228, 228, 1);
+	font-size: .16rem;
+	color: #333;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	
+     left: 0;
+    right: 0;
 }

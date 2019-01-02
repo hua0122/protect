@@ -1,8 +1,4 @@
-.index {
-	background: rgba(228, 228, 228, 1);
-	font-size: .16rem;
-	color: #333;
-}
+
 
 .index .header {
 	width: 100%;
@@ -34,14 +30,17 @@
 
 .index .main {
 	width: 100%;
-	padding: .175rem;
-	box-sizing: border-box;
 }
 
 .index .main .contentbox {
 
 	border-radius: .25rem;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: .175rem;
+	box-sizing: border-box;
 }
 
 .index .main .content {
@@ -51,6 +50,7 @@
 	padding-top: .25rem;
 	margin-bottom: .12rem;
 	box-sizing: border-box;
+	border-radius: .25rem .25rem 0 0
 }
 
 .index .main .content .con {
@@ -89,9 +89,10 @@
 	display: block;
 	position: absolute;
 	top: .12rem;
-	left:.1rem;
+	left: .1rem;
 	background: #0076FF;
 }
+
 .index .main .content .foot .item {
 	height: .3rem;
 	line-height: .3rem;
@@ -101,14 +102,15 @@
 }
 
 
-.index  .item1>div {
+.index .item1>div {
 	width: 2.2rem;
 	margin: .5rem auto;
 }
 
-.index .item2{
+.index .item2 {
 	overflow-y: scroll;
 }
+
 .index .item3>div {
 	width: 2.2rem;
 	margin: .15rem auto;
@@ -132,10 +134,11 @@
 
 
 .index .main .tab-item {
-	width: 100%;
+	width: 3.4rem;
 	height: 1.36rem;
 	display: flex;
 	justify-content: space-between;
+
 }
 
 .index .main .tab-item .item {
@@ -148,6 +151,14 @@
 	box-sizing: border-box;
 }
 
+.index .main .tab-item .item:first-child {
+	border-radius: 0 0 0 .25rem;
+}
+
+.index .main .tab-item .item:last-child {
+	border-radius: 0 0 .25rem 0;
+}
+
 .index .main .tab-item .item>div {
 	line-height: .27rem;
 }
@@ -157,9 +168,10 @@
 }
 
 
-.item2 .input-row{
+.item2 .input-row {
 	letter-spacing: 0;
 }
-.item2 .input-row input{
+
+.item2 .input-row input {
 	padding: 0;
 }

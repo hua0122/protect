@@ -11,25 +11,26 @@
 
 .TstudentDetail .main {
 	width: 100%;
-	padding: 0 0 .6rem 0;
 	box-sizing: border-box;
 }
 
 .dange .main {
 
-	padding: .175rem;
+	
 	box-sizing: border-box;
 }
 
 .TstudentDetail .main .contentbox {
-	overflow: hidden;
 	font-size: .14rem;
 }
-
+.rDetail  .main .contentbox .content {
+	padding: .175rem;
+}
 .TstudentDetail .main .contentbox .content {
-	width: 100%;
-	padding: .01rem;
+	width:100%;
 	box-sizing: border-box;
+	
+	
 }
 
 .TstudentDetail .foot {
@@ -124,6 +125,7 @@
 
 .TstudentDetail .column .item .text6 {
 	font-size: .06rem;
+	margin-left: .05rem;
 }
 
 .TstudentDetail .column {
@@ -140,7 +142,7 @@
 
 .TstudentDetail .column:last-child {
 	border-radius: 0 0 .25rem .25rem;
-
+	margin: 0;
 }
 
 .TstudentDetail .mui-slider-item {
@@ -166,11 +168,14 @@
 	box-sizing: border-box;
 }
 .TstudentDetail .column .item .name{
-	flex: .5;
+	flex: .8;
+	overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
 }
 .TstudentDetail .column .item .relieve{
 	
-	flex: 1.5;
+	flex: 1;
 	line-height: .2rem;
 }
 .TstudentDetail .column .item .deinsurance .time{
