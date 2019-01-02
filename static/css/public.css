@@ -48,6 +48,8 @@
 	margin: 0;
 	font-size: .13rem;
 	line-height: .3rem;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .input-row textarea {
