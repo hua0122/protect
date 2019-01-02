@@ -85,7 +85,7 @@
 }
 
 .box-shadow {
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349019607843137);
+	box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.349019607843137);
 	/* -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349019607843137);
 	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349019607843137);
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349019607843137); */
@@ -93,7 +93,7 @@
 
 .border-shadow {
 	border: 1px solid #0076FF;
-	-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349019607843137);
+	-webkit-box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.349019607843137);
 	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349019607843137);
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349019607843137);
 }
