@@ -1,7 +1,15 @@
 .login{
-	padding: 1.44rem .48rem 2.48rem .48rem;
 	box-sizing: border-box;
-	position: relative;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.login-box{
+	width: 3rem;
 }
 .login h1{
 	text-align: center;
