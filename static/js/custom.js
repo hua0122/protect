@@ -59,7 +59,7 @@ function focusblurborder() {
 		}
 	});
 	$('.input-row').find("input").on('blur', function(e) {
-		if ($(this).parents(".input-colum") == 1) {
+		if ($(this).parents(".input-colum").length == 1) {
 			$(this).parents(".input-colum").removeClass("border-shadow");
 
 		} else {
@@ -80,7 +80,7 @@ function focusblurborder() {
 		}
 	});
 	$('.input-row').find("textarea").on('blur', function(e) {
-		if ($(this).parents(".input-colum") == 1) {
+		if ($(this).parents(".input-colum").length == 1) {
 			$(this).parents(".input-colum").removeClass("border-shadow");
 
 		} else {
