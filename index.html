@@ -320,7 +320,7 @@
 					let name = $(this).parents(".relieve").siblings(".name").text();
 					let tel = $(this).parents(".relieve").siblings(".tel").text();
 					$(".index-TstudentDetail").css("display", "none");
-					mui.confirm("将 " + name + " " + tel + "替换掉，确认吗？", " ", ["取消", "替换"], function(e) {
+					mui.confirm("将 <font class='ztsfontcolor'>" + name + " " + tel + "</font>替换掉，确认吗？", " ", ["取消", "替换"], function(e) {
 						if (e.index == 1) {
 							resource_replace(id)
 						}

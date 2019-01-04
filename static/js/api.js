@@ -150,21 +150,25 @@ function resource_list(type) {
 		let listSrc = "";
 		// 已脱保列表
 		let deactivationSrc = "";
-		let valuesrc = "";
 		let time = "";
-		let titlesrc = "";
 		let dxSrc = "";
 		let daynumStudent = 0;
 		let numStudent = 0;
-		let tbtiem="";
+		let tbtiem = "";
 		if (rlData == null || rlData == undefined || rlData == "" || rlData == "null") {
 			valuesrc = "<div class='item'>暂无数据</div>";
-			tbtiem='<span>保护名单</span>';
+			tbtiem = '<span>保护名单</span>';
 
 		} else {
 			for (var i = 0; i < rlData.length; i++) {
 
 				time = rlData[i].time;
+				let valuesrc = "";
+				let titlesrc = "";
+				let zongsrc = "";
+				tbtiem = '<div class="item ztsfontcolor"><span><span class="time">' + time +
+					'</span><span class="text6">脱保</span></span></div>';
+				console.log(rlData[i].time)
 				if (i == 0) {
 					titlesrc = '<div class="title">' +
 						'共<span class="ztsfontcolor numStudent">28</span>名保护成员' +
@@ -185,19 +189,16 @@ function resource_list(type) {
 					numStudent++;
 					daynumStudent++;
 				});
+				zongsrc += tbtiem + valuesrc;
 
+				listSrc += '<div class="column box-shadow">' +
+					titlesrc +
+					zongsrc +
+					dxSrc +
+					'</div>';
 			}
-			tbtiem='<span><span class="time">' + time + '</span><span class="text6">脱保</span></span>';
-
 		}
-		listSrc += '<div class="column box-shadow">' +
-			titlesrc +
-			'<div class="item ztsfontcolor">' +
-			 tbtiem+
-			'</div>' +
-			valuesrc +
-			dxSrc +
-			'</div>';
+
 		$(".TstudentDetail .content").html(listSrc);
 		$(".numStudent").text(numStudent);
 		if (type == "page") {

@@ -195,7 +195,10 @@ white-space: nowrap;
 .index-TstudentDetail .relieve {
 	color: #333;
 }
-
+.index-TstudentDetail .main{
+	padding: .175rem;
+	box-sizing:border-box;
+}
 .input-row {
 	letter-spacing: 0;
 }
