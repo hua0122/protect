@@ -125,6 +125,7 @@ function resource_add(ajaxdata) {
 
 			// 资源保护详细
 			protect_detail();
+			resource_list("popo");
 		})
 	}
 }
@@ -251,6 +252,7 @@ function resource_replace(id) {
 
 		// 资源保护详细
 		protect_detail();
+		resource_list("popo");
 	}
 }
 
