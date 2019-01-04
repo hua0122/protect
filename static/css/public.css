@@ -70,7 +70,9 @@
 .ztsfontcolor {
 	color: #0076FF;
 }
-
+.timebox{
+	text-align: left;
+}
 .item3 .mui-popup-button.mui-popup-button-bold:nth-of-type(2) {
 	color: red;
 }

@@ -110,8 +110,8 @@ function select_student(ajaxdata) {
 		}
 	}
 	if (data.status == "500") {
-		mui.alert("您查询的学员已经被保护\n\n保护时间：<font>" + data.data.protect_time + "</font>\n脱保时间：<font>" + data.data.deactivation_time +
-			"</font>", " ")
+		mui.alert("您查询的学员已经被保护\n\n<div class='timebox'>保护时间：<font>" + data.data.protect_time + "</font>\n脱保时间：<font>" + data.data.deactivation_time +
+			"</font></div>", " ")
 	}
 }
 // 意向资源添加保护
