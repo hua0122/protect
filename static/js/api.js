@@ -496,8 +496,10 @@ function develop_show() {
 function develop_edit(ajaxdata) {
 	let data = ajaxPost(protect_develop_edit, ajaxdata);
 	if (data.status == "200") {
-		mui.alert("修改成功", " ");
+		mui.alert("修改成功", " ",function(){
 		history.back();
+			
+		});
 	} else {
 
 		mui.alert(data.msg, " ");
