@@ -106,7 +106,7 @@
 
 					let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 
-					let datetime1 = new Date($("#selDeal_time").val().replace("T", " "));
+					let datetime1 = new Date($("#selDeal_time").val().replace("T", " ").replace(/-/g, "/"));
 					let name = $("#selName").val(), //[string]		学员姓名	
 						studentPhone = $("#selTel").val(), //复制	[string]	是	学员电话号码	
 						person = userInfo.phone, //[string]	是	推荐人电话号码	
