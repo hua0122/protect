@@ -451,7 +451,6 @@ function develop_list() {
 
 // 添加开发记录
 function develop_add(ajaxdata) {
-alert("2")
 	let data = ajaxPost(protect_develop_add, ajaxdata);
 	if (data.status == "200") {
 		mui.alert("添加成功", " ");

@@ -503,8 +503,6 @@
 					let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 
 					let datetime1 = new Date($("#addDeal_time").val().replace("T", " ").replace(/-/g, "/"));
-					alert($("#addDeal_time").val().replace("T", " ").replace(/-/g, "/"))
-					alert(datetime1)
 					let name = $("#addName").val(), //[string]		学员姓名	
 						studentPhone = $("#addTel").val(), //复制	[string]	是	学员电话号码	
 						person = userInfo.phone, //[string]	是	推荐人电话号码	
