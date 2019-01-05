@@ -323,6 +323,9 @@ function deal_list() {
 		}
 		$(".item1").html(src)
 		$(".numStudent").text(numStudent);
+		if(data.data.length==1){
+			$(".column").addClass("bordercolumn");
+		}
 	}
 }
 
@@ -393,6 +396,9 @@ function deal_team() {
 		}
 		$(".item2").html(src)
 		$(".numStudent").text(numStudent);
+		if(data.data.length==1){
+			$(".column").addClass("bordercolumn");
+		}
 	}
 }
 // 开发记录列表
@@ -445,6 +451,9 @@ function develop_list() {
 				'</div>';
 		}
 		$(".content").html(src)
+		if(data.data.length==1){
+			$(".column").addClass("bordercolumn");
+		}
 		$(".numStudent").text(numStudent);
 	}
 }
@@ -498,7 +507,6 @@ function develop_edit(ajaxdata) {
 	if (data.status == "200") {
 		mui.alert("修改成功", " ",function(){
 		history.back();
-			
 		});
 	} else {
 
