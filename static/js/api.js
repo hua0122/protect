@@ -184,8 +184,8 @@ function resource_list(type) {
 						'<div class="name">' + value.name + '</div>' +
 						'<div class="tel">' + value.tel + '</div>' +
 						'<div class="relieve"><span class="time">' + value.deactivation_time.substring(0, value.deactivation_time.length -
-							3) + '</span><span class="line">|</span><span class="replace" id="' + value.id + '">' + jcth +
-						'<span class="mui-icon mui-icon-forward"></span></span></div>' +
+							3) + '</span><span class="replace" id="' + value.id + '"><span class="line">|</span>' + jcth +
+						'</span></div>' +
 						'</div>';
 					numStudent++;
 					daynumStudent++;
@@ -215,8 +215,8 @@ function resource_list(type) {
 						'<div class="name">' + deactivationData[i].name + '</div>' +
 						'<div  class="tel">' + deactivationData[i].tel + '</div>' +
 						'<div class="relieve deinsurance"><span class="time">' + deactivationData[i].deactivation_time +
-						'</span><span class="line">|</span>' +
-						deactivationData[i].status + '</div>' +
+						'</span><span class="replace"><span class="line">|</span>' +
+						deactivationData[i].status + '</span></div>' +
 						'</div>';
 
 				}

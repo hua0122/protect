@@ -158,15 +158,21 @@
 	justify-content: space-around;
 	align-items: center;
 }
-
+.TstudentDetail .relieve .replace{
+	display: flex;
+	align-items: center;
+	width: 40%;
+}
 .TstudentDetail .relieve .time {
 	color: #333;
+	width: 60%;
 }
 
 .TstudentDetail .relieve .line {
 	display: block;
 	color: #0076FF;
 	box-sizing: border-box;
+	margin: 0 .1rem;
 }
 .TstudentDetail .column .item .name{
 	flex: .8;
@@ -176,7 +182,7 @@ white-space: nowrap;
 }
 .TstudentDetail .column .item .relieve{
 	
-	flex: 1;
+	flex: 1.4;
 	line-height: .2rem;
 }
 .TstudentDetail .column .item .deinsurance .time{
