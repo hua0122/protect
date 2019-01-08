@@ -124,6 +124,7 @@ function toLogin() {
 	if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
 		getopenid();
 	}else{
+		console.log(userInfo.school_id);
 		if(userInfo.school_id==1){
 			school=="djjx";
 		}
@@ -142,8 +143,13 @@ function toLogin() {
 		if(userInfo.school_id==6){
 			school=="ydxc";
 		}
+			console.log(school)
+			console.log(params)
 		if(params!=school){
-			getopenid();
+			
+				console.log(school)
+				console.log(params)
+			// getopenid();
 		}
 	}
 }
