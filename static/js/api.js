@@ -234,6 +234,7 @@ function resource_list(type) {
 
 		}
 	}
+	
 }
 
 // 资源保护人员替换

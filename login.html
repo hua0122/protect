@@ -82,7 +82,8 @@
 				}
 				let ajaxdata = {
 					tel: recomphone,
-					code: recomcode
+					code: recomcode,
+					openid:getQueryString("openid")
 				}
 				login(ajaxdata);
 			})
