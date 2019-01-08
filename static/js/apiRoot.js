@@ -73,6 +73,21 @@ function getopenid() {
 		if (params=="ydxc") {
 			window.location.href = domainName + "/api/user/getwxinfo_protect_ydxc";
 		}
+		if (params=="djjx") {
+			window.location.href = domainName + "/api/user/getwxinfo_protect_djjx";
+		}
+		if (params=="xnjx") {
+			window.location.href = domainName + "/api/user/getwxinfo_protect_xnjx";
+		}
+		if (params=="cnjx") {
+			window.location.href = domainName + "/api/user/getwxinfo_protect_cnjx";
+		}
+		if (params=="jxyjx") {
+			window.location.href = domainName + "/api/user/getwxinfo_protect_jxyjx";
+		}
+		if (params=="xxc") {
+			window.location.href = domainName + "/api/user/getwxinfo_protect_xxc";
+		}
 	}
 
 }
