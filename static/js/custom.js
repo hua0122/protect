@@ -124,32 +124,27 @@ function toLogin() {
 	if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
 		getopenid();
 	}else{
-		console.log(userInfo.school_id);
 		if(userInfo.school_id==1){
-			school=="djjx";
+			school="djjx";
 		}
 		if(userInfo.school_id==2){
-			school=="jxyjx";
+			school="jxyjx";
 		}
 		if(userInfo.school_id==3){
-			school=="cnjx";
+			school="cnjx";
 		}
 		if(userInfo.school_id==4){
-			school=="xnjx";
+			school="xnjx";
 		}
 		if(userInfo.school_id==5){
-			school=="xxc";
+			school="xxc";
 		}
 		if(userInfo.school_id==6){
-			school=="ydxc";
+			school="ydxc";
 		}
-			console.log(school)
-			console.log(params)
 		if(params!=school){
 			
-				console.log(school)
-				console.log(params)
-			// getopenid();
+			getopenid();
 		}
 	}
 }
