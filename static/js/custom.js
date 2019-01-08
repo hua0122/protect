@@ -119,28 +119,29 @@ function toLogin() {
 	let params = getQueryString("params");
 	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	let school="";
-	if(userInfo.school_id==1){
-		school=="djjx";
-	}
-	if(userInfo.school_id==2){
-		school=="jxyjx";
-	}
-	if(userInfo.school_id==3){
-		school=="cnjx";
-	}
-	if(userInfo.school_id==4){
-		school=="xnjx";
-	}
-	if(userInfo.school_id==5){
-		school=="xxc";
-	}
-	if(userInfo.school_id==6){
-		school=="ydxc";
-	}
+	
 	
 	if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
 		getopenid();
 	}else{
+		if(userInfo.school_id==1){
+			school=="djjx";
+		}
+		if(userInfo.school_id==2){
+			school=="jxyjx";
+		}
+		if(userInfo.school_id==3){
+			school=="cnjx";
+		}
+		if(userInfo.school_id==4){
+			school=="xnjx";
+		}
+		if(userInfo.school_id==5){
+			school=="xxc";
+		}
+		if(userInfo.school_id==6){
+			school=="ydxc";
+		}
 		if(params!=school){
 			getopenid();
 		}
