@@ -70,7 +70,7 @@ function getopenid() {
 	if (openid != null && openid != "" && openid != "null" && openid != undefined && openid != "undefined") {
 		location.href = "login.html?openid=" + openid;
 	} else {
-		if (params="ydxc") {
+		if (params=="ydxc") {
 			window.location.href = domainName + "/api/user/getwxinfo_protect ";
 		}
 	}
