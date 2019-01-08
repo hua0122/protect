@@ -119,7 +119,6 @@ function toLogin() {
 	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 	if (userInfo == null || userInfo == "" || userInfo == "null" || userInfo == undefined || userInfo == "undefined") {
 		getopenid();
-		location.href = "login.html";
 	}
 }
 
@@ -130,30 +129,4 @@ function dateCsh() {
 	return str;
 }
 
-function getopenid() {
-	let id = getQueryString("school_id");
-	let openid = getQueryString("openid");
-	if (openid != null && openid != "" && openid != "null" && openid != undefined && openid != "undefined") {
-		location.href = "login.html?openid=" + openid;
-	} else {
-		if (id == 1) {
-			window.location.href = domainName + "/api/user/getwxinfo_djjx";
-		}
-		if (id == 2) {
-			window.location.href = domainName + "/api/user/getwxinfo_xxc";
-		}
-		if (id == 3) {
-			window.location.href = domainName + "/api/user/getwxinfo_ydxc";
-		}
-		if (id == 4) {
-			window.location.href = domainName + "/api/user/getwxinfo_ydxc";
-		}
-		if (id == 5) {
-			window.location.href = domainName + "/api/user/getwxinfo_ydxc";
-		}
-		if (id == 6) {
-			window.location.href = domainName + "/api/user/getwxinfo_ydxc";
-		}
-	}
 
-}
