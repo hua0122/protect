@@ -18,6 +18,12 @@
 		<script src="static/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/custom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/reg.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/apiRoot.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/api.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+					toLogin();
+		</script>
 	</head>
 	<body>
 		<section class=" index">
@@ -281,13 +287,9 @@
 
 
 		</section>
-		<script src="static/js/reg.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/apiRoot.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/api.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			// 页面加载
 			$(function() {
-				toLogin();
 				// 获取用户信息
 				let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 
@@ -320,11 +322,12 @@
 					let name = $(this).parents(".relieve").siblings(".name").text();
 					let tel = $(this).parents(".relieve").siblings(".tel").text();
 					$(".index-TstudentDetail").css("display", "none");
-					mui.confirm("将 <font class='ztsfontcolor'>" + name + " " + tel + "</font> 替换掉，确认吗？", " ", ["取消", "替换"], function(e) {
-						if (e.index == 1) {
-							resource_replace(id)
-						}
-					})
+					mui.confirm("将 <font class='ztsfontcolor'>" + name + " " + tel + "</font> 替换掉，确认吗？", " ", ["取消", "替换"],
+						function(e) {
+							if (e.index == 1) {
+								resource_replace(id)
+							}
+						})
 
 				})
 
@@ -499,7 +502,7 @@
 					select_student(ajaxdata)
 				})
 				// 添加开发记录
-				$(".addBtn").on("click",function() {
+				$(".addBtn").on("click", function() {
 					let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
 
 					let datetime1 = new Date($("#addDeal_time").val().replace("T", " ").replace(/-/g, "/"));
