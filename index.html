@@ -477,7 +477,7 @@
 					localStorage.removeItem("p_userInfo");
 
 					mui.alert("退出登录", " ", function() {
-						location.href = "login.html";
+						WeixinJSBridge.call('closeWindow');
 					})
 				})
 				// 意向资源保护
