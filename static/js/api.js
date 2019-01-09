@@ -2,6 +2,8 @@
 let protect_sent_msg = "/api/protect/sent_msg";
 // 登录
 let protect_login = "/api/protect/login";
+// 退出登录
+let protect_clear = "/api/protect/clear";
 // 查询推荐码
 let protect_get_code = "/api/protect/get_code";
 // 设置推荐码
@@ -110,7 +112,8 @@ function select_student(ajaxdata) {
 		}
 	}
 	if (data.status == "500") {
-		mui.alert("您查询的学员已经被保护\n\n<div class='timebox'>保护时间：<font>" + data.data.protect_time + "</font>\n脱保时间：<font>" + data.data.deactivation_time +
+		mui.alert("您查询的学员已经被保护\n\n<div class='timebox'>保护时间：<font>" + data.data.protect_time + "</font>\n脱保时间：<font>" + data.data
+			.deactivation_time +
 			"</font></div>", " ")
 	}
 }
@@ -234,7 +237,7 @@ function resource_list(type) {
 
 		}
 	}
-	
+
 }
 
 // 资源保护人员替换
@@ -324,7 +327,7 @@ function deal_list() {
 		}
 		$(".item1").html(src)
 		$(".numStudent").text(numStudent);
-		if(data.data.length==1){
+		if (data.data.length == 1) {
 			$(".column").addClass("bordercolumn");
 		}
 	}
@@ -397,7 +400,7 @@ function deal_team() {
 		}
 		$(".item2").html(src)
 		$(".numStudent").text(numStudent);
-		if(data.data.length==1){
+		if (data.data.length == 1) {
 			$(".column").addClass("bordercolumn");
 		}
 	}
@@ -452,7 +455,7 @@ function develop_list() {
 				'</div>';
 		}
 		$(".content").html(src)
-		if(data.data.length==1){
+		if (data.data.length == 1) {
 			$(".column").addClass("bordercolumn");
 		}
 		$(".numStudent").text(numStudent);
@@ -506,8 +509,8 @@ function develop_show() {
 function develop_edit(ajaxdata) {
 	let data = ajaxPost(protect_develop_edit, ajaxdata);
 	if (data.status == "200") {
-		mui.alert("修改成功", " ",function(){
-		history.back();
+		mui.alert("修改成功", " ", function() {
+			history.back();
 		});
 	} else {
 
@@ -550,5 +553,17 @@ function deal_detail() {
 
 		$(".deal_total").html(data.data.total)
 		$(".deal_num").html(data.data.num)
+	}
+}
+// 退出登录
+function clear() {
+	let userInfo = JSON.parse(localStorage.getItem("p_userInfo"));
+	let ajaxdata = {
+		person: userInfo.phone
+	}
+	let data = ajaxPost(protect_clear, ajaxdata);
+	if (data.status == "200") {
+		localStorage.removeItem("p_userInfo");
+		WeixinJSBridge.call('closeWindow');
 	}
 }

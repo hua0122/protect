@@ -476,8 +476,7 @@
 				$(".Logout").click(function() {
 
 					mui.alert("退出登录", " ", function() {
-					localStorage.removeItem("p_userInfo");
-						WeixinJSBridge.call('closeWindow');
+					clear();
 					})
 				})
 				// 意向资源保护
