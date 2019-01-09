@@ -474,9 +474,9 @@
 					window.location.reload();
 				})
 				$(".Logout").click(function() {
-					localStorage.removeItem("p_userInfo");
 
 					mui.alert("退出登录", " ", function() {
+					localStorage.removeItem("p_userInfo");
 						WeixinJSBridge.call('closeWindow');
 					})
 				})
